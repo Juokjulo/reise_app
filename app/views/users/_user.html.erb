@@ -1,2 +1,4 @@
 <td><%= link_to user.name, user %></td>
 <td><%= link_to user.email, user %></td>
+<td>Newsletter: <%= "Ja" if user.newsletter_abo %><%= "Nein" if ! user.newsletter_abo %></td>
+<td>Admin: <%= "Ja" if user.admin %><%= "Nein" if ! user.admin %></td>
