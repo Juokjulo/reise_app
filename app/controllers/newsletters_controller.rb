@@ -1,5 +1,6 @@
 class NewslettersController < ApplicationController
   before_action :set_newsletter, only: [:show, :edit, :update, :destroy]
+  before_filter :check_privileges!
 
   # GET /newsletters
   # GET /newsletters.json

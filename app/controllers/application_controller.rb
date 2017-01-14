@@ -9,4 +9,7 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: [:name, :email, :password, :password_confirmation, :newsletter_abo])
   end
 
+  def check_privileges!
+	redirect_to "/", notice: 'You dont have enough permissions to be here' unless user_signed_in? and current_user.admin 
+  end
 end

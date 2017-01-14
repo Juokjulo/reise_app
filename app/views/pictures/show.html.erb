@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @picture.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @picture.description %>
+</p>
+
+<p>
+  <%= image_tag(@picture.image_url, :width => 600) if @picture.image.present? %>
+</p>
+
+<% if user_signed_in? and current_user.admin? %>
+	<%= link_to 'Edit', edit_picture_path(@picture) %> |
+<% end %>
+<%= link_to 'Back', pictures_path %>
