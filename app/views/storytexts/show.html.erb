@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+<%= render 'container' %>
+
+<p>
+  <strong>Title:</strong>
+  <%= @storytext.title %>
+</p>
+
+<p>
+  <strong>Storypart:</strong>
+  <%= @storytext.storypart %>
+</p>
+<p>
+ <b>Story:</b>
+  <%= @storytext.story.title %>
+</p>
+
+<%= link_to 'Edit', edit_storytext_path(@storytext) %> |
+<%= link_to 'Back', storytexts_path %>
+
+<%= render 'container_end' %>

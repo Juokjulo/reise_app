@@ -3,4 +3,5 @@
 <% if user_signed_in? and current_user.admin? %>
   <li class='nav-item'><%= link_to 'Newsletter', newsletters_path, class: 'nav-link' %></li>
   <li class='nav-item'><%= link_to 'Picture', pictures_path, class: 'nav-link' %></li>
+  <li class='nav-item'><%= link_to 'Stories', stories_path, class: 'nav-link' %></li>
 <% end %>

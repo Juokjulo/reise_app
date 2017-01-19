@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Storytexts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Storypart</th>
+      <th>Story</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @storytexts = Storytext.where(story_id: $current_story ) %>
+    <% @storytexts.each do |storytext| %>
+      <tr>
+        <td><%= storytext.title %></td>
+        <td><%= storytext.storypart %></td>
+        <td><%= storytext.story %></td>
+        <td><%= link_to 'Show', storytext %></td>
+        <td><%= link_to 'Edit', edit_storytext_path(storytext) %></td>
+        <td><%= link_to 'Destroy', storytext, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Storytext', new_storytext_path%>

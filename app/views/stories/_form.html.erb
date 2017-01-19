@@ -1,0 +1,38 @@
+<%= form_for(story) do |f| %>
+  <% if story.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(story.errors.count, "error") %> prohibited this story from being saved:</h2>
+
+      <ul>
+      <% story.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :sort_description %>
+    <%= f.text_area :sort_description %>
+  </div>
+  <h1>Storytexts</h1>
+  <% @storytexts = Storytext.where(story_id: story) %>
+  <% @storytexts.each do |storytext| %>  
+    <%= render 'storytexts/form', storytext: storytext, story: story %>
+    <%= link_to 'Destroy', storytext, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %>
+
+<br>
+
+<%= link_to 'New Storytext', new_storytext_path(:storytext => {  :story_id => story.id})%>
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

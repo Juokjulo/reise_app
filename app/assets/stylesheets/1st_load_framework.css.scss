@@ -16,8 +16,13 @@ img {
 // create your own classes
 // to make views framework-neutral
 .column {
-  @extend .col-md-6;
+  @extend .col-md-8;
+  @extend .col-xs-12;
   @extend .text-xs-center;
+  @extend .text-md-left;
+  background-color: white;
+  left:50%;
+  transform: translate(-50%,0%);
 }
 .form {
   @extend .col-md-6;
@@ -81,3 +86,4 @@ section {
   @extend .btn-primary;
   @extend .btn-sm;
 }
+

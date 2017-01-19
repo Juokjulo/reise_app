@@ -10,6 +10,6 @@ class ApplicationController < ActionController::Base
   end
 
   def check_privileges!
-	redirect_to "/", notice: 'You dont have enough permissions to be here' unless user_signed_in? and current_user.admin 
+	redirect_to "/", notice: 'You dont have enough permissions to be here' unless current_user.try(:admin?)
   end
 end

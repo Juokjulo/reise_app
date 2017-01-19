@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+<%= render 'container' %>
 <p>
   <strong>Name:</strong>
   <%= @picture.name %>
@@ -14,7 +14,8 @@
   <%= image_tag(@picture.image_url, :width => 600) if @picture.image.present? %>
 </p>
 
-<% if user_signed_in? and current_user.admin? %>
+<% if current_user.try(:admin?) %>
 	<%= link_to 'Edit', edit_picture_path(@picture) %> |
 <% end %>
 <%= link_to 'Back', pictures_path %>
+<%= render 'container_end' %>

@@ -1,0 +1,1 @@
+json.partial! "storytexts/storytext", storytext: @storytext

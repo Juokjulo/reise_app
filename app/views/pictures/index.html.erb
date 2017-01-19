@@ -1,34 +1,34 @@
 <p id="notice"><%= notice %></p>
+<%= render 'container' %>
+  <h1>Pictures</h1>
 
-<h1>Pictures</h1>
+  <table>
+     <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Image</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Image</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @pictures.each do |picture| %>
-      <tr>
-        <td><%= picture.name %></td>
-        <td><%= picture.description %></td>
-        <td><%= image_tag(picture.image_url, :width => 100) if picture.image.present? %></td>
-        <td><%= link_to 'Show', picture %></td>
-        <% if user_signed_in? and current_user.admin? %>
-          <td><%= link_to 'Edit', edit_picture_path(picture) %></td>
-          <td><%= link_to 'Destroy', picture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <tbody>
+        <% @pictures.each do |picture| %>
+          <tr>
+            <td><%= picture.name %></td>
+            <td><%= picture.description %></td>
+            <td><%= image_tag(picture.image_url, :width => 100) if picture.image.present? %></td>
+            <td><%= link_to 'Show', picture %></td>
+            <% if current_user.try(:admin?) %>
+              <td><%= link_to 'Edit', edit_picture_path(picture) %></td>
+              <td><%= link_to 'Destroy', picture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <% end %>
+          </tr>
         <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
+      </tbody>
+    </table>
 <br>
-<% if user_signed_in? and current_user.admin? %>
+<% if current_user.try(:admin?) %>
   <%= link_to 'New Picture', new_picture_path %>
 <% end %>
+<%= render 'container_end' %>
