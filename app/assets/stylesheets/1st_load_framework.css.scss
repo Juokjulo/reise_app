@@ -41,8 +41,10 @@ img {
 // to make views framework-neutral
 main {
   @extend .container;
-  margin-top: 30px; // accommodate the navbar
+  margin-top: 80px; // accommodate the navbar
 }
+
+
 
 section {
   @extend .row;
@@ -85,5 +87,15 @@ section {
   @extend .btn;
   @extend .btn-primary;
   @extend .btn-sm;
+}
+
+
+
+body{
+    background: no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 

@@ -1,8 +1,9 @@
-<%= render 'container' %>
+<% content_for :title do %>Newsletters<% end %>
+<%= render 'layouts/container' %>
 <h1>New Newsletter</h1>
 
 <%= render 'form', newsletter: @newsletter %>
 
 <%= link_to 'Back', newsletters_path %>
 
-<%= render 'container_end' %>
+<%= render 'layouts/container_end' %>

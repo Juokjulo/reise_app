@@ -1,4 +1,5 @@
-<%= render 'container' %>
+<% content_for :title do %>Stories<% end %>
+<%= render 'layouts/container' %>
 <h1>Editing Story</h1>
 
 <%= render 'form', story: @story %>
@@ -6,4 +7,4 @@
 <%= link_to 'Show', @story %> |
 <%= link_to 'Back', stories_path %>
 
-<%= render 'container_end' %>
+<%= render 'layouts/container_end' %>

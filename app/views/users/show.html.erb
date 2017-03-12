@@ -1,5 +1,10 @@
+<% content_for :title do %>Users<% end %>
+<%= render 'layouts/container' %>
 <h3>User</h3>
 <p>Name: <%= @user.name if @user.name %></p>
 <p>Email: <%= @user.email if @user.email %></p>
 <p>Newsletter: <%= "Ja" if @user.newsletter_abo %><%= "Nein" if ! @user.newsletter_abo %></p>
-<p>Admin: <%= "Ja" if @user.admin %><%= "Nein" if ! @user.admin %></p>
+<% if current_user.try(:admin?) %>
+	<p>Admin: <%= "Ja" if @user.admin %><%= "Nein" if ! @user.admin %></p>
+<% end %>
+<%= render 'layouts/container_end' %>

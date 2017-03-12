@@ -1,0 +1,11 @@
+<% content_for :title do %>Material Categories<% end %>
+<%= render 'layouts/container' %>
+<p>
+  <strong>Name:</strong>
+  <%= @material_category.name %>
+</p>
+
+<%= link_to 'Edit', edit_material_category_path(@material_category) %> |
+<%= link_to 'Back', material_categories_path %>
+
+<%= render 'layouts/container_end' %>

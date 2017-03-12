@@ -1,5 +1,5 @@
-<p id="notice"><%= notice %></p>
-<%= render 'container' %>
+<% content_for :title do %>Pictures<% end %>
+<%= render 'layouts/container' %>
   <h1>Pictures</h1>
 
   <table>
@@ -31,4 +31,4 @@
 <% if current_user.try(:admin?) %>
   <%= link_to 'New Picture', new_picture_path %>
 <% end %>
-<%= render 'container_end' %>
+<%= render 'layouts/container_end' %>

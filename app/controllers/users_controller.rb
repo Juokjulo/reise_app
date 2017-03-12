@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
+  before_filter :check_privileges!, except: [:show]
 
   def index
     @users = User.all

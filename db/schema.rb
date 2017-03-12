@@ -10,7 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170114163934) do
+ActiveRecord::Schema.define(version: 20170130181912) do
+
+  create_table "material_categories", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "materials", force: :cascade do |t|
+    t.string   "name"
+    t.string   "sponsor"
+    t.integer  "material_category_id"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.index ["material_category_id"], name: "index_materials_on_material_category_id"
+  end
 
   create_table "newsletters", force: :cascade do |t|
     t.string   "title"
@@ -32,6 +47,17 @@ ActiveRecord::Schema.define(version: 20170114163934) do
     t.text     "sort_description"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+  end
+
+  create_table "storytext_pictures", force: :cascade do |t|
+    t.string   "options"
+    t.integer  "size"
+    t.integer  "storytext_id"
+    t.integer  "picture_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["picture_id"], name: "index_storytext_pictures_on_picture_id"
+    t.index ["storytext_id"], name: "index_storytext_pictures_on_storytext_id"
   end
 
   create_table "storytexts", force: :cascade do |t|

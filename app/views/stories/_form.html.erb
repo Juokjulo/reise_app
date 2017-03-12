@@ -21,15 +21,14 @@
     <%= f.text_area :sort_description %>
   </div>
   <h1>Storytexts</h1>
-  <% @storytexts = Storytext.where(story_id: story) %>
-  <% @storytexts.each do |storytext| %>  
-    <%= render 'storytexts/form', storytext: storytext, story: story %>
-    <%= link_to 'Destroy', storytext, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <%= f.fields_for :storytexts do |builder| %>
+    <%= render 'storytext_fields', :f => builder%>
   <% end %>
 
 <br>
-
-<%= link_to 'New Storytext', new_storytext_path(:storytext => {  :story_id => story.id})%>
+      <div class="links">
+        <%= link_to_add_association 'add storytext', f, :storytexts %>
+      </div>
 
 
   <div class="actions">

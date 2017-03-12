@@ -1,0 +1,9 @@
+<% content_for :title do %>Materials<% end %>
+<%= render 'layouts/container' %>
+<h1>New Material</h1>
+
+<%= render 'form', material: @material %>
+
+<%= link_to 'Back', materials_path %>
+
+<%= render 'layouts/container_end' %>

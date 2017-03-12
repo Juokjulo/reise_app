@@ -1,1 +1,0 @@
-json.array! @storytexts, partial: 'storytexts/storytext', as: :storytext
