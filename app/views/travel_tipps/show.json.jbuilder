@@ -1,0 +1,1 @@
+json.partial! "travel_tipps/travel_tipp", travel_tipp: @travel_tipp

@@ -1,13 +1,21 @@
 class StoriesController < ApplicationController
   before_action :set_story, only: [:show, :edit, :update, :destroy]
-  before_filter :check_privileges!, except: [:index, :show]
+  before_filter :check_privileges!, except: [:index, :show, :list_stories]
 
   # GET /stories
   # GET /stories.json
   def index
     @stories = Story.all
+    @countries = Country.all
+    @path = 'country_stories_path' 
+    render 'countries/list', path: @path 
   end
 
+  def list_stories
+    @country = Country.find(params[:country])
+    @stories = Story.where(country_id: @country).all
+  end
+ 
   # GET /stories/1
   # GET /stories/1.json
   def show
@@ -28,6 +36,7 @@ class StoriesController < ApplicationController
   # POST /stories.json
   def create
     @story = Story.new(story_params)
+    @story.user_id = current_user.id
 
     respond_to do |format|
       if @story.save
@@ -73,6 +82,6 @@ class StoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def story_params
-      params.require(:story).permit(:title, :sort_description, storytexts_attributes: [ :title, :storypart, :id, :_destroy, storytext_pictures_attributes: [ :options, :size, :id, :picture_id, :_destroy ]])
+      params.require(:story).permit(:title, :short_description, :public, :country_id, :picture_id, :user_id, storytexts_attributes: [ :title, :storypart, :id, :_destroy, storytext_pictures_attributes: [ :options, :size, :id, :picture_id, :_destroy ]])
     end
 end

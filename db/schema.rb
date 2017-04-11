@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170130181912) do
+ActiveRecord::Schema.define(version: 20170320172954) do
+
+  create_table "countries", force: :cascade do |t|
+    t.string   "name"
+    t.text     "shortDescription"
+    t.integer  "picture_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["picture_id"], name: "index_countries_on_picture_id"
+  end
 
   create_table "material_categories", force: :cascade do |t|
     t.string   "name"
@@ -22,9 +31,15 @@ ActiveRecord::Schema.define(version: 20170130181912) do
     t.string   "name"
     t.string   "sponsor"
     t.integer  "material_category_id"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.integer  "picture_id"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.boolean  "public",               default: true
+    t.string   "sponsor_link"
+    t.text     "description"
+    t.string   "amazon_link"
     t.index ["material_category_id"], name: "index_materials_on_material_category_id"
+    t.index ["picture_id"], name: "index_materials_on_picture_id"
   end
 
   create_table "newsletters", force: :cascade do |t|
@@ -38,15 +53,24 @@ ActiveRecord::Schema.define(version: 20170130181912) do
     t.string   "name"
     t.text     "description"
     t.string   "image"
+    t.integer  "country_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.index ["country_id"], name: "index_pictures_on_country_id"
   end
 
   create_table "stories", force: :cascade do |t|
     t.string   "title"
-    t.text     "sort_description"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.text     "short_description"
+    t.integer  "country_id"
+    t.integer  "user_id"
+    t.integer  "picture_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.boolean  "public"
+    t.index ["country_id"], name: "index_stories_on_country_id"
+    t.index ["picture_id"], name: "index_stories_on_picture_id"
+    t.index ["user_id"], name: "index_stories_on_user_id"
   end
 
   create_table "storytext_pictures", force: :cascade do |t|
@@ -67,6 +91,15 @@ ActiveRecord::Schema.define(version: 20170130181912) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["story_id"], name: "index_storytexts_on_story_id"
+  end
+
+  create_table "travel_tipps", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "country_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["country_id"], name: "index_travel_tipps_on_country_id"
   end
 
   create_table "users", force: :cascade do |t|

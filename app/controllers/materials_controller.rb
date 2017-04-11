@@ -17,19 +17,16 @@ class MaterialsController < ApplicationController
   # GET /materials/new
   def new
     @material = Material.new
-    @material_category = MaterialCategory.get_form_options
   end
 
   # GET /materials/1/edit
   def edit
-    @material_category = MaterialCategory.get_form_options
   end
 
   # POST /materials
   # POST /materials.json
   def create
     @material = Material.new(material_params)
-    @material.material_category = MaterialCategory.find(params[:material][:material_category_id])
 
     respond_to do |format|
       if @material.save
@@ -45,7 +42,7 @@ class MaterialsController < ApplicationController
   # PATCH/PUT /materials/1
   # PATCH/PUT /materials/1.json
   def update
-    @material.material_category = MaterialCategory.find(params[:material][:material_category_id])
+
     respond_to do |format|
       if @material.update(material_params)
         format.html { redirect_to @material, notice: 'Material was successfully updated.' }
@@ -75,6 +72,6 @@ class MaterialsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def material_params
-      params.require(:material).permit(:name, :sponsor)
+      params.require(:material).permit(:name, :sponsor, :sponsor_link, :amazon_link, :description, :picture_id, :material_category_id)
     end
 end

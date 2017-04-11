@@ -4,7 +4,7 @@
 
 <%= render 'form', material: @material %>
 
-<%= link_to 'Show', @material %> |
-<%= link_to 'Back', materials_path %>
+<%= link_to 'Show', @material, :class => "btn btn-info", :role => "button" %> 
+<%= link_to 'Back', materials_path, :class => "btn btn-primary", :role => "button" %>
 
 <%= render 'layouts/container_end' %>

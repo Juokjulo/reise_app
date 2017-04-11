@@ -1,5 +1,5 @@
 class MaterialCategory < ApplicationRecord
-  has_many :materials
+  has_many :materials, dependent: :destroy
   
   def self.get_form_options
   out = []

@@ -16,11 +16,10 @@ img {
 // create your own classes
 // to make views framework-neutral
 .column {
-  @extend .col-md-8;
+  @extend .col-lg-10;
+  @extend .col-md-10;
   @extend .col-xs-12;
-  @extend .text-xs-center;
   @extend .text-md-left;
-  background-color: white;
   left:50%;
   transform: translate(-50%,0%);
 }

@@ -1,0 +1,32 @@
+<%= render 'layouts/container' %>
+
+<h1>Travel Tipps</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @travel_tipps.each do |travel_tipp| %>
+      <tr>
+        <td><%= travel_tipp.name %></td>
+        <td><%= travel_tipp.description %></td>
+        <td><%= travel_tipp.country.name %></td>
+        <td><%= link_to 'Show', travel_tipp %></td>
+        <td><%= link_to 'Edit', edit_travel_tipp_path(travel_tipp) %></td>
+        <td><%= link_to 'Destroy', travel_tipp, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Travel Tipp', new_travel_tipp_path %>
+
+<%= render 'layouts/container_end' %>

@@ -1,5 +1,7 @@
 <% content_for :title do %>Materials<% end %>
 <%= render 'layouts/container' %>
+</br>
+<%= image_tag(@material.picture.image_url, :width => 200) if @material.picture.present? %>
 <p>
   <strong>Name:</strong>
   <%= @material.name %>
@@ -7,11 +9,15 @@
 
 <p>
   <strong>Sponsor:</strong>
-  <%= @material.sponsor %>
+  <%= link_to @material.sponsor, @material.sponsor_link %>
+</p>
+<p>
+  <strong>Description:</strong>
+  <%= @material.description %>
 </p>
 <% if current_user.try(:admin?) %>
-	<%= link_to 'Edit', edit_material_path(@material) %> |
+	<%= link_to 'Edit', edit_material_path(@material), :class => "btn btn-primary", :role => "button" %> 
 <% end %>
-<%= link_to 'Back', materials_path %>
+<%= link_to 'Back', materials_path, :class => "btn btn-primary", :role => "button" %>
 
 <%= render 'layouts/container_end' %>

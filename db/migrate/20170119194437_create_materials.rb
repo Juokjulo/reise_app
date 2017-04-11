@@ -4,6 +4,7 @@ class CreateMaterials < ActiveRecord::Migration[5.0]
       t.string :name
       t.string :sponsor
       t.belongs_to :material_category, index: true
+      t.belongs_to :picture, index: true
 
       t.timestamps
     end

@@ -1,0 +1,1 @@
+json.array! @travel_tipps, partial: 'travel_tipps/travel_tipp', as: :travel_tipp

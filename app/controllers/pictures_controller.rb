@@ -1,11 +1,19 @@
 class PicturesController < ApplicationController
   before_action :set_picture, only: [:show, :edit, :update, :destroy]
-  before_filter :check_privileges!, except: [:index, :show]
+  before_filter :check_privileges!, except: [:index, :show, :list_pictures]
 
   # GET /pictures
   # GET /pictures.json
   def index
     @pictures = Picture.all
+    @countries = Country.all
+    @path = 'country_pictures_path' 
+    render 'countries/list', path: @path 
+  end
+
+  def list_pictures
+    @country = Country.find(params[:country])
+    @pictures = Picture.where(country_id: @country).all
   end
 
   # GET /pictures/1
@@ -70,6 +78,6 @@ class PicturesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def picture_params
-      params.require(:picture).permit(:name, :description, :image)
+      params.require(:picture).permit(:name, :description, :image, :country_id)
     end
 end

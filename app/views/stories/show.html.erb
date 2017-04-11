@@ -1,27 +1,32 @@
 <% content_for :title do %>Stories<% end %>
 <%= render 'layouts/container' %>
 
-<p>
-  <h3><%= @story.title %></h3>
-</p>
+<% if current_user.try(:admin?) or @story.public %>
+	<p>
+	  <h3><%= @story.title %></h3>
+	</p>
 
-<p>
-  <strong>Sort description:</strong>
-  <%= @story.sort_description %>
-</p>
+	<p>
+	  <strong>Short description:</strong>
+	  <%= @story.short_description %>
+	</p>
 
-<% for storytext in @story.storytexts %>
-<p>
- <h4><%=storytext.title%></h4>
- <%==storytext.storypart%>
- <% for storytext_picture in storytext.storytext_pictures %>
-	<%= image_tag(storytext_picture.picture.image_url, :width => 60) if storytext_picture.picture.image.present? %>
- <% end %>
-</p>
+	<% for storytext in @story.storytexts %>
+	<p>
+	 <h4><%=storytext.title%></h4>
+	 <%==storytext.storypart%>
+	 <% for storytext_picture in storytext.storytext_pictures %>
+		<%= image_tag(storytext_picture.picture.image_url, :width => 60) if storytext_picture.picture.image.present? %>
+	 <% end %>
+	</p>
+	<% end %>
+
 <% end %>
+
 <% if current_user.try(:admin?) %>
 	<%= link_to 'Edit', edit_story_path(@story) %> |
 <% end %>
+
 <%= link_to 'Back', stories_path %>
 
 <%= render 'layouts/container_end' %>

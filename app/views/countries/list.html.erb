@@ -1,0 +1,40 @@
+<%= render 'layouts/container' %>
+
+<% if @path == 'country_stories_path'%>
+<h1>Stories</h1>
+<% end %>
+<% if @path == 'country_pictures_path'%>
+<h1>Galerie</h1>
+<% end %>
+
+<div class="container">
+<div class="row">
+<% @countries.each do |country| %>
+<div class="cols-sm-12 col-md-4 ">
+<div class="card card-inverse" style="width: 200px;">
+  <% if country.picture.image.present? %>
+      <%= image_tag(country.picture.image_url, :width => 200, :class => "card-img" )%>
+  <% end %>
+  <% if @path == 'country_stories_path' %>
+  <%= link_to list_stories_path(country)  do %>
+      <div class="card-img-overlay">
+        <h4 class="card-title"><%= country.name %></h4>
+      </div>
+    <% end %>
+  <% end %>
+  <% if @path == 'country_pictures_path' %>
+  <%= link_to list_pictures_path(country)  do %>
+      <div class="card-img-overlay">
+        <h4 class="card-title"><%= country.name %></h4>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+</div>
+<% end %>
+</div>
+</div>
+
+<br>
+<%= render 'layouts/container_end' %>
+

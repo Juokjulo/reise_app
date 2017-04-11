@@ -4,6 +4,7 @@ class CreatePictures < ActiveRecord::Migration[5.0]
       t.string :name
       t.text :description
       t.string :image
+      t.belongs_to :country, index: true
 
       t.timestamps
     end

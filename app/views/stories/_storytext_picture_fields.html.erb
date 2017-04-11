@@ -4,7 +4,7 @@
     <%= f.label :size %>
     <%= f.number_field :size %>
     <%= f.label :picture %><br />
-    <%= f.select( :picture_id, Picture.all.collect {|p| [ p.name, p.id ] }, { include_blank: false })%>
+    <%= f.select( :picture_id, Picture.all.collect {|p| [ p.name, p.id] }, { include_blank: false } ) %>
     <%= f.hidden_field :_destroy %>
     <%= link_to_remove_association "remove storytext_pictures", f, {wrapper_class: 'storytext_picture-fields'} %>
 </div>

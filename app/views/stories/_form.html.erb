@@ -17,9 +17,25 @@
   </div>
 
   <div class="field">
-    <%= f.label :sort_description %>
-    <%= f.text_area :sort_description %>
+    <%= f.label :short_description %>
+    <%= f.text_area :short_description %>
   </div>
+
+  <div class="field">
+    <%= f.label :public %>
+    <%= f.check_box :public %>
+  </div>
+
+  <div class="field">
+    <%= f.label :country %><br />
+    <%= f.select( :country_id, Country.all.collect {|c| [ c.name, c.id] }, { include_blank: false } ) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :picture %><br />
+    <%= f.select( :picture_id, Picture.all.collect {|p| [ p.name, p.id] }, { include_blank: false } ) %>
+  </div>
+
   <h1>Storytexts</h1>
   <%= f.fields_for :storytexts do |builder| %>
     <%= render 'storytext_fields', :f => builder%>
