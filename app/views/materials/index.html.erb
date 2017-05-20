@@ -25,6 +25,7 @@
 
     <tbody>
       <% @materials.each do |material| %>
+       <% if current_user.try(:admin?) or material.public %>
         <% if material.material_category == material_category %>
         <tr>
         <div class="container">
@@ -58,6 +59,7 @@
         </div>
         </tr>
         <% end %>
+       <% end %>
       <% end %>
     </tbody>
   </table>

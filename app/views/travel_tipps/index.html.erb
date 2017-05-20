@@ -13,6 +13,7 @@
 
   <tbody>
     <% @travel_tipps.each do |travel_tipp| %>
+      <% if current_user.try(:admin?) or travel_tipp.public %>
       <tr>
         <td><%= travel_tipp.name %></td>
         <td><%= travel_tipp.description %></td>
@@ -21,6 +22,7 @@
         <td><%= link_to 'Edit', edit_travel_tipp_path(travel_tipp) %></td>
         <td><%= link_to 'Destroy', travel_tipp, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
