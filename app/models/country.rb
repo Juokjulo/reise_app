@@ -3,4 +3,5 @@ class Country < ApplicationRecord
 	has_many :pictures
 	has_many :travelTipps
 	has_many :stories
+	has_many :videos
 end

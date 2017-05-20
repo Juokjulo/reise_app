@@ -1,85 +1,95 @@
 <% content_for :title do %>Pictures<% end %>
 <%= render 'layouts/container' %>
   <h1>Pictures</h1>
-<div class="card-group">
 
-        <% @pictures.each do |picture| %>
+<% if @country != nil %>
+  <p>
+  <%= link_to 'Videos', list_videos_path(@country), :class => "btn btn-secondary", :role => "button"  %>
+  <%= link_to 'Stories', list_stories_path(@country), :class => "btn btn-secondary", :role => "button"  %>
+  <%= link_to 'Travel Tipps', list_travel_tipps_path(@country), :class => "btn btn-secondary", :role => "button"  %>
+  <%= link_to 'Show Country', @country, :class => "btn btn-secondary", :role => "button"  %>
+  </p>
+<% end %>
+
+<div class="card-group">
+  <div class="container">
+    <div class="row">
+
+  <% @pictures.each do |picture| %>    
+    <% if current_user.try(:admin?) or picture.public %>
+      <div class="cols-sm-12 col-md-6 col-lg-4 col-lx-3">
         <div class="card">
-              <%= image_tag(picture.image_url, :class =>"card-img-top" ) if picture.image.present? %>
+        <a href=<%= picture.image_url%> title=<%= picture.name %> data-gallery>
+              <%= image_tag(picture.image_url, :class =>"card-img-top", :height => "200px" ) if picture.image.present? %></a>
                 <div class="card-block">
                       <h4 class="card-title"><%= picture.name %></h4>
                       <p class="card-text"><%= picture.description %></p>
-                 </div>
-                  <div class="card-footer">
-      <small class="text-muted">Last updated 3 mins ago</small>
-   
-        
-              <%= picture.country.name %>
-              <!-- Large modal -->
-<button class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button>
-
-
-
-              <%= link_to 'Show', picture %>
+                      <%= link_to 'Show', picture %>
               <% if current_user.try(:admin?) %>
                 <%= link_to 'Edit', edit_picture_path(picture) %>
                 <%= link_to 'Destroy', picture, method: :delete, data: { confirm: 'Are you sure?' } %>
-            <% end %> </div>
-            
-            </div>
+            <% end %>
+                 </div>
+                  <div class="card-footer">
+      <small class="text-muted">Posted in <%= link_to picture.country.name , list_pictures_path(picture.country) %>  on <%= picture.created_at.strftime("%-d.%-m.%Y") %>, last update on <%= picture.updated_at.strftime("%-d.%-m.%Y")  %></small>
           
-        <% end %> 
-  
+               </div>
+            
+          </div>
+        </div>
+     <% end %>      
+  <% end %> 
+
+    </div>
+  </div>
 </div>
 <br>
+
 <% if current_user.try(:admin?) %>
   <%= link_to 'New Picture', new_picture_path %>
 <% end %>
 
-<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-  <div class="carousel-inner" role="listbox">
-     <div class="carousel-item active">
-      <%= image_tag(@pictures.first.image_url, :class =>"d-block img-fluid") %>
-    </div>
-    <% @pictures.each do |picture| %>
-    <div class="carousel-item ">
-      <%= image_tag(picture.image_url, :class =>"d-block img-fluid") if picture.image.present? %>
-    </div>
-    <% end %> 
-  </div>
-  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
 </div>
 <%= render 'layouts/container_end' %>
 
-<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-    <div class="modal-header">
-        <h5 class="modal-title">Modal title
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button></h5>
-      </div>
-     <div class="modal-body">
-     <p> image</p>
 
 
 
 
 
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Save changes</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-   
+<!-- The Bootstrap Image Gallery lightbox, should be a child element of the document body -->
+<div id="blueimp-gallery" class="blueimp-gallery">
+    <!-- The container for the modal slides -->
+    <div class="slides"></div>
+    <!-- Controls for the borderless lightbox -->
+    <h3 class="title"></h3>
+    <a class="prev">‹</a>
+    <a class="next">›</a>
+    <a class="close">×</a>
+    <a class="play-pause"></a>
+    <ol class="indicator"></ol>
+    <!-- The modal dialog, which will be used to wrap the lightbox content -->
+    <div class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title"></h4>
+                </div>
+                <div class="modal-body next"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left prev">
+                        <i class="glyphicon glyphicon-chevron-left"></i>
+                        Previous
+                    </button>
+                    <button type="button" class="btn btn-primary next">
+                        Next
+                        <i class="glyphicon glyphicon-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
+
+

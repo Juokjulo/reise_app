@@ -3,12 +3,15 @@
 
 
 <h1>Stories</h1>
-<p>
-<%= link_to 'Pictures', list_pictures_path(@country), :class => "btn btn-secondary", :role => "button"  %>
-<%= link_to 'Travel Tipps', list_travel_tipps_path(@country), :class => "btn btn-secondary", :role => "button"  %>
-<%= link_to 'Show', @country %>
-</p>
 
+<% if @country != nil %>
+  <p>
+  <%= link_to 'Videos', list_videos_path(@country), :class => "btn btn-secondary", :role => "button"  %>
+  <%= link_to 'Pictures', list_pictures_path(@country), :class => "btn btn-secondary", :role => "button"  %>
+  <%= link_to 'Travel Tipps', list_travel_tipps_path(@country), :class => "btn btn-secondary", :role => "button"  %>
+  <%= link_to 'Show Country', @country, :class => "btn btn-secondary", :role => "button"  %>
+  </p>
+<% end %>
 
 <% @stories.each do |story| %>
  <% if current_user.try(:admin?) or story.public %>
@@ -19,7 +22,20 @@
       </h4>
     </div>
       <p class="card-text">
-          <%= story.short_description %>
+        <% if story.picture.present? %>
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-12 col-md-6 col-lg-6 col-lx-6">
+        <% end %>
+                <%== story.short_description %>
+        <% if story.picture.present? %>
+              </div>
+              <div class="col-sm-12 col-md-6 col-lg-6 col-lx-6">
+                <%= image_tag(story.picture.image_url, :width => "100%") if story.picture.present? %>
+              </div>
+            </div>
+          </div>
+        <% end %>
       </p>
       <p>
           <%= link_to 'Read more', story, :class => "btn btn-success", :role => "button"  %>
@@ -27,9 +43,12 @@
             <%= link_to 'Edit', edit_story_path(story), :class => "btn btn-info", :role => "button"  %>
             <%= link_to 'Destroy', story, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger", :role => "button"  %>
           <% end %>
+          <% if story.tag_list.to_s != '' %>
+            <p>Tags: <%= raw(story.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')) %></p>
+          <% end %> 
       </p>
       <div class="card-footer text-muted" >
-          written by <%= story.user.name %>   in <%= story.country.name %> on <%= story.created_at.strftime("%A, the %-d %B %Y") %>, last update on <%= story.updated_at.strftime("%A, the %-d %B %Y")  %>
+          written by <%= story.user.name %>   in <%= link_to story.country.name , list_stories_path(story.country) %>  on <%= story.created_at.strftime("%A, the %-d %B %Y") %>, last update on <%= story.updated_at.strftime("%A, the %-d %B %Y")  %>
       </div>
    </div>
   <% end %>

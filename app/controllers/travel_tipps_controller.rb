@@ -78,6 +78,6 @@ class TravelTippsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def travel_tipp_params
-      params.require(:travel_tipp).permit(:name, :description, :country_id)
+      params.require(:travel_tipp).permit(:name, :description, :country_id, :public)
     end
 end

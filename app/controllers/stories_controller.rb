@@ -12,8 +12,12 @@ class StoriesController < ApplicationController
   end
 
   def list_stories
-    @country = Country.find(params[:country])
-    @stories = Story.where(country_id: @country).all
+    if params[:tag]
+      @stories = Story.tagged_with(params[:tag])
+    else
+      @country = Country.find(params[:country])
+      @stories = Story.where(country_id: @country).all
+    end
   end
  
   # GET /stories/1
@@ -82,6 +86,6 @@ class StoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def story_params
-      params.require(:story).permit(:title, :short_description, :public, :country_id, :picture_id, :user_id, storytexts_attributes: [ :title, :storypart, :id, :_destroy, storytext_pictures_attributes: [ :options, :size, :id, :picture_id, :_destroy ]])
+      params.require(:story).permit(:title, :short_description, :public, :country_id, :picture_id, :user_id, :tag_list, :tag, { tag_ids: [] }, storytexts_attributes: [ :title, :storypart, :id, :_destroy, storytext_pictures_attributes: [ :options, :size, :id, :picture_id, :_destroy ]])
     end
 end

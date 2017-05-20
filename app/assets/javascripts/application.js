@@ -12,7 +12,42 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require tether
 //= require turbolinks
 //= require bootstrap-sprockets
-//= require_tree .
 //= require cocoon
+//= require chosen
+//= require_tree .
+//= require blueimp-gallery
+//= require blueimp-gallery-fullscreen
+//= require blueimp-gallery-indicator
+//= require blueimp-gallery-video
+//= require blueimp-gallery-youtube
+//= require jquery.blueimp-gallery
+//= require bootstrap-image-gallery
+
+
+$(function () { 
+ $('#story_tag_ids').chosen({
+      allow_single_deselect: true,
+      width: '100%'
+    })
+    $('#video_tag_ids').chosen({
+      allow_single_deselect: true,
+      width: '100%'
+    })
+    $(".story_picture_id").chosen()
+});
+
+  $(document).on(' ready page:after-remove', function () {
+    $('#story_tag_ids').chosen({
+      allow_single_deselect: true,
+      width: '100%'
+    })
+    $('#video_tag_ids').chosen({
+      allow_single_deselect: true,
+      width: '100%'
+    })
+    $(".story_picture_id").chosen()
+  });
+ 

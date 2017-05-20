@@ -1,22 +1,21 @@
 <%= render 'layouts/container' %>
 
 <p>
-  <strong>Name:</strong>
-  <%= @country.name %>
+  <h1><%= @country.name %></h1>
 </p>
 
 <p>
-  <strong>Titleimage:</strong>
-  <%= image_tag(@country.picture.image_url, :width => 60) if @country.picture.image.present? %>
+  <%= image_tag(@country.picture.image_url, :width => "100%") if @country.picture.image.present? %>
 </p>
 
 <p>
-  <strong>Shortdescription:</strong>
-  <%= @country.shortDescription %>
+  <%== @country.shortDescription %>
 </p>
 
-     
-<%= link_to 'Edit', edit_country_path(@country) %> |
-<%= link_to 'Back', countries_path %>
+<% if current_user.try(:admin?) %>
+	<%= link_to 'Edit', edit_country_path(@country), :class => "btn btn-info", :role => "button"   %> 
+<% end %>
+
+<%= link_to 'Back', list_stories_path(@country), :class => "btn btn-secondary", :role => "button"  %>
 
 <%= render 'layouts/container_end' %>

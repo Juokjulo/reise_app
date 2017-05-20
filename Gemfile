@@ -10,7 +10,10 @@ gem 'coffee-rails', '~> 4.2'
 gem 'jquery-rails'
 gem 'cocoon'
 gem 'turbolinks', '~> 5'
+gem 'Bootstrap-Image-Gallery-rails'
 gem 'jbuilder', '~> 2.5'
+gem 'acts-as-taggable-on', :git => 'https://github.com/mbleigh/acts-as-taggable-on'
+
 group :development, :test do
   gem 'byebug', platform: :mri
 end
@@ -27,4 +30,8 @@ gem 'high_voltage'
 group :development do
   gem 'better_errors'
   gem 'rails_layout'
+end
+source 'https://rails-assets.org' do
+  gem 'rails-assets-chosen'
+  gem 'rails-assets-tether', '>= 1.1.0'
 end

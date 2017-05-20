@@ -1,0 +1,51 @@
+<% content_for :title do %>Videos<% end %>
+<%= render 'layouts/container' %>
+
+
+<h1>Videos</h1>
+<% if @country != nil %>
+  <p>
+  <%= link_to 'Pictures', list_pictures_path(@country), :class => "btn btn-secondary", :role => "button"  %>
+  <%= link_to 'Stories', list_stories_path(@country), :class => "btn btn-secondary", :role => "button"  %>
+  <%= link_to 'Travel Tipps', list_travel_tipps_path(@country), :class => "btn btn-secondary", :role => "button"  %>
+  <%= link_to 'Show Country', @country, :class => "btn btn-secondary", :role => "button"  %>
+  </p>
+<% end %>
+
+<% @videos.each do |video| %>
+ <% if current_user.try(:admin?) or video.public %>
+  <div class="card" >
+    <div class="card-header" >
+      <h4 class="card-title">
+        <%= video.name %>
+      </h4>
+    </div>
+      <p class="card-text">
+        <div class="embed-responsive embed-responsive-16by9">
+          <iframe class="embed-responsive-item"  width="560" height="315" src=<%= video.url %> allowfullscreen></iframe>
+        </div>
+        <p><%= video.description %></p>
+      </p>
+      <p>
+          <% if current_user.try(:admin?) %>
+            <%= link_to 'Edit', edit_video_path(video), :class => "btn btn-info", :role => "button"  %>
+             <%= link_to 'Destroy', video, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger", :role => "button"  %>
+          <% end %>
+          <% if video.tag_list.to_s != '' %>
+            <p>Tags: <%= raw(video.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')) %></p>
+          <% end %> 
+      </p>
+      <div class="card-footer text-muted" >
+          published in <%= link_to video.country.name , list_videos_path(video.country) %>  on <%= video.created_at.strftime("%A, the %-d %B %Y") %>, last update on <%= video.updated_at.strftime("%A, the %-d %B %Y")  %>
+      </div>
+   </div>
+  <% end %>
+<% end %>
+
+<br>
+
+<% if current_user.try(:admin?) %>
+
+  <p><%= link_to 'New Video', new_video_path, :class => "btn btn-primary", :role => "button"  %></p>
+<% end %>
+<%= render 'layouts/container_end' %>

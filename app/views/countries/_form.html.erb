@@ -17,6 +17,11 @@
   </div>
 
   <div class="field">
+    <%= f.label :public %>
+    <%= f.check_box :public %>
+  </div>
+
+  <div class="field">
     <%= f.label :picture %><br />
     <%= f.select( :picture_id, Picture.all.collect {|p| [ p.name, p.id] }, { include_blank: false } ) %>
   </div>

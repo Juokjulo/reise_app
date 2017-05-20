@@ -1,4 +1,5 @@
 class Story < ApplicationRecord
+	acts_as_taggable 
 	belongs_to :country, inverse_of: :stories
 	belongs_to :picture, inverse_of: :stories
 	belongs_to :user
