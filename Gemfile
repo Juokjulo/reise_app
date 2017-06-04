@@ -2,7 +2,9 @@ source 'https://rubygems.org'
 ruby '2.3.3'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 gem 'sqlite3'
-gem 'mysql2'
+group :production do
+	gem 'mysql2'
+end
 gem 'carrierwave'
 gem 'puma', '~> 3.0'
 gem 'sass-rails', '~> 5.0'
