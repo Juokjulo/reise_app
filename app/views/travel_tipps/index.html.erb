@@ -29,6 +29,9 @@
 
 <br>
 
+<% if current_user.try(:admin?) %>
+
 <%= link_to 'New Travel Tipp', new_travel_tipp_path %>
 
+<% end %>
 <%= render 'layouts/container_end' %>
