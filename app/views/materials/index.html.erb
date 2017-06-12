@@ -1,7 +1,7 @@
-<% content_for :title do %>Materials<% end %>
+<% content_for :title do %>Gear<% end %>
 <%= render 'layouts/container' %>
 
-<h1>Materials</h1>
+<h1>Gear</h1>
 
 
 
@@ -46,7 +46,10 @@
               <% end %>
             </div>
             <div class="col-sm-12 col-md-4 col-lg-4 col-lx-4">
-              Sponsor: </br><%= link_to material.sponsor, material.sponsor_link %>
+              <%= link_to material.sponsor, material.sponsor_link, target: '_blank' %>
+              <% if material.amazon_link.present? %>
+                <%= link_to 'affiliate link Amazon GER' , material.amazon_link, target: '_blank' %>
+              <% end %>
             </div>
               <% if current_user.try(:admin?) %>
               <div class="col-sm-12 col-md-12 col-lg-12 col-lx-12">
