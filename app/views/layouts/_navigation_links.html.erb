@@ -18,6 +18,7 @@
 <li class='nav-item'><%= link_to 'Travel Tipps', travel_tipps_path, class: 'nav-link' %></li>
 <% if user_signed_in? and current_user.admin? %>
   <li class='nav-item'><%= link_to 'Material Category', material_categories_path, class: 'nav-link' %></li>
+  <li class='nav-item'><%= link_to 'Tags', tags_path, class: 'nav-link' %></li>
   <li class='nav-item'><%= link_to 'Country', countries_path, class: 'nav-link' %></li>
   <li class='nav-item'><%= link_to 'Newsletter', newsletters_path, class: 'nav-link' %></li>
 <% end %>
