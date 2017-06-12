@@ -39,16 +39,11 @@
               <% end %>
             </div>
             <div class="col-sm-12 col-md-4 col-lg-4 col-lx-4">
-              <% if material.amazon_link.present? %>
-                <%= link_to material.name , material.amazon_link %>
-              <% else %>
-                <%=  material.name %> 
-              <% end %>
-            </div>
+              <%= link_to material.name , material %>
             <div class="col-sm-12 col-md-4 col-lg-4 col-lx-4">
               <%= link_to material.sponsor, material.sponsor_link, target: '_blank' %>
               <% if material.amazon_link.present? %>
-                <%= link_to 'affiliate link Amazon GER' , material.amazon_link, target: '_blank' %>
+                <%= link_to 'Affiliate link Amazon GER' , material.amazon_link, target: '_blank' %>
               <% end %>
             </div>
               <% if current_user.try(:admin?) %>
