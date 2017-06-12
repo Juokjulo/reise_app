@@ -1,7 +1,7 @@
 <% content_for :title do %>Materials<% end %>
 <%= render 'layouts/container' %>
 </br>
-<% if current_user.try(:admin?) or @story.public %>
+<% if current_user.try(:admin?) or @material.public %>
 	<p>
 	  <h1><%= @material.name  %></h1>
 	</p>
@@ -15,8 +15,8 @@
 <p>
   <%= link_to @material.sponsor, @material.sponsor_link, target: '_blank'  %>
   </br>
-  <% if material.amazon_link.present? %>
-  	<%= link_to 'Affiliate link Amazon GER' , material.amazon_link, target: '_blank' %>
+  <% if @material.amazon_link.present? %>
+  	<%= link_to 'Affiliate link Amazon GER' , @material.amazon_link, target: '_blank' %>
   <% end %>
   </br>
 </p>
