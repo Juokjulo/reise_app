@@ -6,7 +6,7 @@
 	  <h1><%= @material.name  %></h1>
 	</p>
 
-<%= image_tag(@material.picture.image_url, :width => 200) if @material.picture.present? %>
+<%= image_tag(@material.picture.image_url, :width => "100%") if @material.picture.present? %>
 
 <p>
   <%= @material.description %>
