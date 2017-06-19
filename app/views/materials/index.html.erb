@@ -44,7 +44,7 @@
             <div class="col-sm-12 col-md-4 col-lg-4 col-lx-4">
               <%= link_to material.sponsor, material.sponsor_link, target: '_blank' %>
               <% if material.amazon_link.present? %>
-                <%= link_to 'Affiliate link Amazon GER' , material.amazon_link, target: '_blank' %>
+                <%= link_to 'Buy it here' , material.amazon_link, target: '_blank', class: 'tooltips', title: 'This is an affiliate link to Amazon. If you purchase any products on Amazon with this link you support us with no extra costs for you.', data: { toggle: 'tooltip', placement: 'top', original_title: 'Link to Amazon' }  %>
               <% end %>
             </div>
               <% if current_user.try(:admin?) %>

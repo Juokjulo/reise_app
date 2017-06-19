@@ -37,6 +37,7 @@ $(function () {
       width: '100%'
     })
     $(".story_picture_id").chosen()
+    $('[data-toggle="tooltip"]').tooltip()
 });
 
   $(document).on(' ready page:after-remove', function () {
@@ -49,5 +50,6 @@ $(function () {
       width: '100%'
     })
     $(".story_picture_id").chosen()
+    $('[data-toggle="tooltip"]').tooltip()
   });
  
