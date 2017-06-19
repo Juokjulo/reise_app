@@ -1,6 +1,6 @@
 <% content_for :title do %>Pictures<% end %>
 <%= render 'layouts/container' %>
-<% if current_user.try(:admin?) or picture.public %>
+<% if current_user.try(:admin?) or @picture.public %>
 <p>
   <h1><%= @picture.name %></h1>
 </p>
