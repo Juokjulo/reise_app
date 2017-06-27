@@ -2,15 +2,15 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "Reise App" %></title>
-    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Reise App" %>">
+    <title><%= content_for?(:title) ? yield(:title) : "We cycle asia" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "We cycle asia" %>">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => 'reload' %>
     <%= csrf_meta_tags %>
     
   </head>
   <body  <% if Picture.first.present? %> style="background-image: url(<%= Picture.first.image_url %> )" <% end %>>
-    
+   
     <header>
       <%= render 'layouts/navigation' %>
     </header>
