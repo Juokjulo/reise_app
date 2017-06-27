@@ -15,19 +15,8 @@
        <div class="row">
 				 <% for storytext_picture in storytext.storytext_pictures %>
 				 
-				 	
-				 	<% if storytext.storytext_pictures.count > 3 %>
+			
 				 		<div class="col-sm-12 col-md-6 col-lg-6 col-lx-6">
-				 	<% end %>
-				 	<% if storytext.storytext_pictures.count = 3 %>
-				 		<div class="col-sm-12 col-md-6 col-lg-4 col-lx-4">
-				 	<% end %>
-				 	<% if storytext.storytext_pictures.count = 2 %>
-				 		<div class="col-sm-12 col-md-6 col-lg-6 col-lx-6">
-				 	<% end %>
-				 	<% if storytext.storytext_pictures.count = 1 %>
-				 		<div class="col-sm-12 col-md-12 col-lg-12 col-lx-12">
-				 	<% end %>
 						<%= image_tag(storytext_picture.picture.image_url, :width => "100%") if storytext_picture.picture.image.present? %>
 					 </div>
 				 <% end %>
