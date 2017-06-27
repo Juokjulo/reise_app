@@ -11,16 +11,13 @@
 	 <h3><%=storytext.title%></h3>
 	 <%==storytext.storypart%>
 	 </br>
-	 <div class="container">
-       <div class="row">
+	 <div class="card-columns">
 				 <% for storytext_picture in storytext.storytext_pictures %>
-				 
-			
-				 		<div class="col-sm-12 col-md-6 col-lg-6 col-lx-6">
-						<%= image_tag(storytext_picture.picture.image_url, :width => "100%") if storytext_picture.picture.image.present? %>
+				 		<div class="card">
+						<%= image_tag(storytext_picture.picture.image_url, :class =>"card-img-top", :width => "100%") if storytext_picture.picture.image.present? %>
 					 </div>
 				 <% end %>
-			</div>
+			
 		</div>
 	</p>
 	<% end %>
