@@ -98,6 +98,14 @@ section {
   }
 }
 
+p {
+    display: block;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 0;
+    margin-right: 0;
+}
+
 body{
     background: no-repeat center center fixed;
     -webkit-background-size: cover;
