@@ -90,10 +90,10 @@ section {
 
 .card-columns {
   @include media-breakpoint-only(md) {
-    column-count: 2;
+    column-count: 5;
   }
     @include media-breakpoint-only(xs) {
-    column-count: 2;
+    column-count: 5;
   }
   @include media-breakpoint-only(lg) {
     column-count: 4;
