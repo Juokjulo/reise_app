@@ -10,9 +10,17 @@
 	<p>
 	 <h3><%=storytext.title%></h3>
 	 <%==storytext.storypart%>
-	 <% for storytext_picture in storytext.storytext_pictures %>
-		<%= image_tag(storytext_picture.picture.image_url, :width => 60) if storytext_picture.picture.image.present? %>
-	 <% end %>
+	 </br>
+	 <div class="container">
+       <div class="row">
+         	<div class="col-sm-12 col-md-6 col-lg-3 col-lx-3">
+				 <% for storytext_picture in storytext.storytext_pictures %>
+				 	<div class="col-sm-12 col-md-6 col-lg-6 col-lx-6">
+						<%= image_tag(storytext_picture.picture.image_url, :width => "100%") if storytext_picture.picture.image.present? %>
+					 </div>
+				 <% end %>
+			</div>
+		</div>
 	</p>
 	<% end %>
 
