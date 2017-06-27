@@ -11,9 +11,8 @@
   </p>
 <% end %>
 
-<div class="card-colums">
-  <div class="container">
-    <div class="row">
+<div class="card-columns">
+
 
   <% @pictures.each do |picture| %>    
     <% if current_user.try(:admin?) or picture.public %>
@@ -40,8 +39,6 @@
      <% end %>      
   <% end %> 
 
-    </div>
-  </div>
 </div>
 <br>
 
