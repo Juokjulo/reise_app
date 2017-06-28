@@ -22,10 +22,10 @@
                 <div class="card-block">
                       <h4 class="card-title"><%= picture.name %></h4>
                       <p class="card-text"><%= picture.description %></p>
-                      <%= link_to 'Show', picture %>
+                      <%= link_to 'Show', picture, :class => "btn btn-success", :role => "button"  %>
               <% if current_user.try(:admin?) %>
-                <%= link_to 'Edit', edit_picture_path(picture) %>
-                <%= link_to 'Destroy', picture, method: :delete, data: { confirm: 'Are you sure?' } %>
+                <%= link_to 'Edit', edit_picture_path(picture), :class => "btn btn-info", :role => "button"  %>
+                <%= link_to 'Destroy', picture, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger", :role => "button"  %>
             <% end %>
                  </div>
                   <div class="card-footer">
@@ -37,7 +37,7 @@
         
      <% end %>      
   <% end %> 
-  
+
 </div>
 <br>
 
