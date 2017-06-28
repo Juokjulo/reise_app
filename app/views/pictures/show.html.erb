@@ -17,7 +17,12 @@
 <% end %>  
 
 <% if current_user.try(:admin?) %>
-	<%= link_to 'Edit', edit_picture_path(@picture), :class => "btn btn-info", :role => "button"  %> 
+	<% if @picture.public %>
+		<%= link_to 'Edit', edit_picture_path(@picture), :class => "btn btn-info", :role => "button"  %> 
+	<% end %>
+	<% if ! @picture.public %>
+		<%= link_to 'Edit', edit_picture_path(@picture), :class => "btn btn-primary", :role => "button"  %> 
+	<% end %>
 <% end %>
 <%= link_to 'Back', list_pictures_path(@picture.country), :class => "btn btn-secondary", :role => "button"   %>
 <%= render 'layouts/container_end' %>
