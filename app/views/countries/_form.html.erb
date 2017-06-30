@@ -26,9 +26,9 @@
     <%= f.select( :picture_id, Picture.all.collect {|p| [ p.name, p.id] }, { include_blank: false } ) %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :shortDescription %>
-    <%= f.text_area :shortDescription, :width => "100%", rows: 20 %>
+    <%= f.text_area :shortDescription, :class => "form-control", rows: 20 %>
   </div>
 
   <div class="actions">
