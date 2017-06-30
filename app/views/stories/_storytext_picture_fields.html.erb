@@ -6,5 +6,5 @@
     <%= f.label :picture %><br />
     <%= f.collection_select :picture_id, Picture.order(:name), :id, :name, {}, {multiple: false, :class => "story_picture_id" }%>
     <%= f.hidden_field :_destroy %>
-    <%= link_to_remove_association "remove storytext_pictures", f, {wrapper_class: 'storytext_picture-fields'} %>
+    <%= link_to_remove_association "remove storytext_pictures", f, {wrapper_class: 'storytext_picture-fields'}, :class => "btn btn-danger", :role => "button"  %>
 </div>

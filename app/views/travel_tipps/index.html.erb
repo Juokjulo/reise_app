@@ -19,9 +19,9 @@
         <td><%= travel_tipp.name %></td>
         <td><%= travel_tipp.description %></td>
         <td><%= travel_tipp.country.name %></td>
-        <td><%= link_to 'Show', travel_tipp %></td>
-        <td><%= link_to 'Edit', edit_travel_tipp_path(travel_tipp) %></td>
-        <td><%= link_to 'Destroy', travel_tipp, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', travel_tipp, :class => "btn btn-success", :role => "button"  %></td>
+        <td><%= link_to 'Edit', edit_travel_tipp_path(travel_tipp), :class => "btn btn-info", :role => "button"  %></td>
+        <td><%= link_to 'Destroy', travel_tipp, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger", :role => "button"  %></td>
       </tr>
       <% end %>
     <% end %>

@@ -10,8 +10,10 @@
   <strong>Description:</strong>
   <%= @travel_tipp.description %>
 </p>
+<% if current_user.try(:admin?) %>
+	<%= link_to 'Edit', edit_travel_tipp_path(@travel_tipp), :class => "btn btn-info", :role => "button"  %> 
+<% end %>
 
-<%= link_to 'Edit', edit_travel_tipp_path(@travel_tipp) %> |
-<%= link_to 'Back', travel_tipps_path %>
+<%= link_to 'Back', travel_tipps_path, :class => "btn btn-secondary", :role => "button"  %>
 
 <%= render 'layouts/container_end' %>

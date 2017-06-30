@@ -18,9 +18,9 @@
         <td><%= country.name %></td>
         <td><%= image_tag(country.picture.image_url, :width => 60) if country.picture.image.present? %></td>
         <td><%= country.shortDescription %></td>
-        <td><%= link_to 'Show', country %></td>
-        <td><%= link_to 'Edit', edit_country_path(country) %></td>
-        <td><%= link_to 'Destroy', country, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', country, :class => "btn btn-success", :role => "button"  %></td>
+        <td><%= link_to 'Edit', edit_country_path(country), :class => "btn btn-info", :role => "button"  %></td>
+        <td><%= link_to 'Destroy', country, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger", :role => "button"  %></td>
       </tr>
     <% end %>
   </tbody>

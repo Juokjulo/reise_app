@@ -14,9 +14,9 @@
     <% @tags.each do |tag| %>
       <tr>
         <td><%= tag.name %></td>
-        <td><%= link_to 'Show', tag %></td>
-        <td><%= link_to 'Edit', edit_tag_path(tag) %></td>
-        <td><%= link_to 'Destroy', tag, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', tag, :class => "btn btn-success", :role => "button"  %></td>
+        <td><%= link_to 'Edit', edit_tag_path(tag), :class => "btn btn-info", :role => "button"  %></td>
+        <td><%= link_to 'Destroy', tag, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger", :role => "button"  %></td>
       </tr>
     <% end %>
   </tbody>
