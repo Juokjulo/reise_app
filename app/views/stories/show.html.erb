@@ -31,7 +31,6 @@
     <% if ! @story.public %>
         <%= link_to 'Edit', edit_story_path(@story), :class => "btn btn-primary", :role => "button"   %> 
     <% end %> 
-	<%= link_to 'Edit', edit_story_path(@story), :class => "btn btn-info", :role => "button"   %> 
 <% end %>
 
 <%= link_to 'Back', list_stories_path(@story.country), :class => "btn btn-secondary", :role => "button"  %>
