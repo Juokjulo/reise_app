@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :tags, except: :show
+  resources :tags
   resources :videos
   resources :travel_tipps
   resources :countries
