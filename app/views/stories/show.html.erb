@@ -10,9 +10,8 @@
 	</p>
 
 	<% for storytext in @story.storytexts %>
-	<p>
 	 <h3><%=storytext.title%></h3>
-	 <%==storytext.storypart%>
+	 <p><%==storytext.storypart%></p>
 	 </br>
 	 <div class="card-columns">
 				 <% for storytext_picture in storytext.storytext_pictures %>
@@ -23,7 +22,6 @@
 				 <% end %>
 			
 		</div>
-	</p>
 	<% end %>
 
 <% end %>
