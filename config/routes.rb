@@ -25,6 +25,6 @@ Rails.application.routes.draw do
     resources :videos
     resources :travel_tipps
   end
-  get 'tags/:tag,:country', to: 'stories#list_stories', :as => "list_stories_tag"
+  get 'tags/:tag.:country', to: 'stories#list_stories', :as => "list_stories_tag"
 
 end
