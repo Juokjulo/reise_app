@@ -32,7 +32,7 @@ img {
 .column {
   @extend .col-lg-10;
   @extend .col-md-10;
-  @extend .col-xs-12 !optional
+  @extend .col-xs-12 !optional;
   @extend .text-md-left;
   left:50%;
   transform: translate(-50%,0%);
@@ -42,7 +42,7 @@ img {
 }
 .form-centered {
   @extend .col-md-6;
-  @extend .text-xs-center;
+  @extend .text-xs-center !optional;
 }
 .submit {
   @extend .btn;
