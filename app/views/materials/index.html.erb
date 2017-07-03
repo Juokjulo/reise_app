@@ -44,7 +44,7 @@
             <div class="col-sm-12 col-md-4 col-lg-4 col-lx-4">
               <%= link_to material.sponsor, material.sponsor_link, target: '_blank' %>
               <% if material.amazon_link.present? %>
-                <%= link_to 'Buy it here' , material.amazon_link, target: '_blank', class: 'tooltips', title: 'This is an affiliate link to Amazon. If you purchase any products on Amazon with this link you support us with no extra costs for you.', data: { toggle: 'tooltip', placement: 'top', original_title: 'Link to Amazon' }  %>
+                <%= link_to 'Buy it here *' , material.amazon_link, target: '_blank', class: 'tooltips', title: 'This is an affiliate link to Amazon. If you purchase any products on Amazon with this link you support us with no extra costs for you.', data: { toggle: 'tooltip', placement: 'top', original_title: 'Link to Amazon' }  %>
               <% end %>
             </div>
               <% if current_user.try(:admin?) %>
@@ -68,6 +68,7 @@
   </div>
 <% end %>
 
+* There are some affiliate links to Amazon. If you purchase any products on Amazon with this link you support us with no extra costs for you. 
 <br>
 <% if current_user.try(:admin?) %>
   <%= link_to 'New Material', new_material_path, :class => "btn btn-primary", :role => "button" %>
