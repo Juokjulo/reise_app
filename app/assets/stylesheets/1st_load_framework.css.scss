@@ -99,18 +99,21 @@ p {
 }
 
 #tag_cloud {
-  width: 80%;
   line-height: 1.6em;
   background-color: #05301B;
-  border: 5px solid #062B19;
-  border-radius: 70px;
-  padding: 50px;
-  .xxs { font-size: 0.8em; COLOR: #70F4C6; }
-  .xs { font-size: 1.0em; COLOR: #6EFFC1; }
-  .s { font-size: 1.2em; COLOR: #54F6BB; }
-  .m { font-size: 1.8em; COLOR: #50E1BF; }
-  .l { font-size: 2.0em; COLOR: #50E1A9; }
-  .xl { font-size: 2.8em; COLOR: #07D083; }
+  border: 5px solid #05301B;
+  border-radius: 30px;
+  padding: 40px;
+  margin-left: 1em;
+  margin-right: 1em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  .xxs { font-size: 0.8em; COLOR: #9BFFC7; }
+  .xs { font-size: 1.0em; COLOR: #B8FF9B; }
+  .s { font-size: 1.2em; COLOR: #18FF6D; }
+  .m { font-size: 1.8em; COLOR: #3AE9A3; }
+  .l { font-size: 2.0em; COLOR: #86E93A; }
+  .xl { font-size: 2.8em; COLOR: #1EC943; }
   .xxl { font-size: 3.6em; COLOR: #00A740; }
 }
 
