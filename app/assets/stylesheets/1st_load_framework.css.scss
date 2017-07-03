@@ -106,16 +106,17 @@ p {
     margin-right: 0;
 }
 
+
 #tag_cloud {
   width: 400px;
   line-height: 1.6em;
-  .xxs { font-size: 0.8em; COLOR: #c3c4c4; }
-  .xs { font-size: 1.0em; COLOR: #b9bdbd; }
-  .s { font-size: 1.2em; COLOR: #b0b5b5; }
-  .m { font-size: 1.4em; COLOR: #9da6a6; }
-  .l { font-size: 1.6em; COLOR: #8a9797; }
-  .xl { font-size: 1.8em; COLOR: #809090; }
-  .xxl { font-size: 2.0em; COLOR: #778888; }
+  .xxs { font-size: 0.8em; }
+  .xs { font-size: 1.0em; }
+  .s { font-size: 1.2em; }
+  .m { font-size: 1.4em; }
+  .l { font-size: 1.6em; }
+  .xl { font-size: 1.8em; }
+  .xxl { font-size: 2.0em; }
 }
 
 body{
