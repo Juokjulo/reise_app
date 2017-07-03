@@ -52,7 +52,7 @@
             <%= link_to 'Destroy', story, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger", :role => "button"  %>
           <% end %>
           <% if story.tag_list.to_s != '' %>
-            <p>Tags: <%= raw(story.tag_list.map { |t| link_to t, tag_path(t, @country) }.join(', ')) %></p>
+            <p>Tags: <%= raw(story.tag_list.map { |t| link_to t, list_stories_tags_path(t) }.join(', ')) %></p>
           <% end %> 
       </p>
       <div class="card-footer text-muted" >
