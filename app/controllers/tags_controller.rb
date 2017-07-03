@@ -1,5 +1,6 @@
 class TagsController < ApplicationController
   before_action :set_tag, only: [:show, :edit, :update, :destroy]
+  before_filter :check_privileges!
 
   # GET /tags
   # GET /tags.json
