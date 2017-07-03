@@ -52,7 +52,7 @@
       <%= link_to 'New Country', new_country_path, :class => "btn btn-primary", :role => "button"  %></p>
 
 <% tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
-  <%= link_to tag.name, list_stories_tags_path(tag) , :class => css_class %>
+  <%= link_to tag.name, list_stories_tags_path(tag.name) , :class => css_class %>
 <% end %>
 <% end %>
 <br>
