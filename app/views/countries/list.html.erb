@@ -50,8 +50,11 @@
       <%= link_to 'New Story', new_story_path, :class => "btn btn-primary", :role => "button"  %>
       <%= link_to 'New Video', new_video_path, :class => "btn btn-primary", :role => "button"  %>
       <%= link_to 'New Country', new_country_path, :class => "btn btn-primary", :role => "button"  %></p>
-<% end %>
 
+<% tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
+  <%= link_to tag.name, list_stories_tags_path(tag) , :class => css_class %>
+<% end %>
+<% end %>
 <br>
 <%= render 'layouts/container_end' %>
 

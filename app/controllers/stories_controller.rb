@@ -8,6 +8,7 @@ class StoriesController < ApplicationController
     @stories = Story.all
     @countries = Country.all
     @path = 'country_stories_path' 
+    @tags = Story.tag_counts_on(:tags)
     render 'countries/list', path: @path 
   end
 
