@@ -26,6 +26,10 @@
 
 <% end %>
 
+<% if @story.tag_list.to_s != '' %>
+            <p>Tags: <%= raw(@story.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')) %></p>
+<% end %> 
+
 <% if current_user.try(:admin?) %>
 	<% if @story.public %>
        <%= link_to 'Edit', edit_story_path(@story), :class => "btn btn-info", :role => "button"   %> 
