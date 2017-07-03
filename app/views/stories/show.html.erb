@@ -1,5 +1,4 @@
 <% content_for :title do %>Stories<% end %>
-
 <%= render 'layouts/container' %>
 
 <% if current_user.try(:admin?) or @story.public %>
@@ -25,10 +24,6 @@
 	<% end %>
 
 <% end %>
-
-<p class="text-muted" >
-          written by <%= story.user.name %>   in <%= link_to story.country.name , list_stories_path(story.country) %>  on <%= story.created_at.strftime("%A, the %-d %B %Y") %>, last update on <%= story.updated_at.strftime("%A, the %-d %B %Y")  %>
-</p>
 
 <% if current_user.try(:admin?) %>
 	<% if @story.public %>
