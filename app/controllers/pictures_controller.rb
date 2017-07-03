@@ -12,8 +12,13 @@ class PicturesController < ApplicationController
   end
 
   def list_pictures
-    @country = Country.find(params[:country])
-    @pictures = Picture.where(country_id: @country).all
+    if params[:tag]
+      @pictures = Picture.tagged_with(params[:tag])
+    else
+      @country = Country.find(params[:country])
+      @pictures = Picture.where(country_id: @country).all
+    end
+
   end
 
   # GET /pictures/1

@@ -26,5 +26,7 @@ Rails.application.routes.draw do
     resources :travel_tipps
   end
   get 'list_stories_tags/:tag', to: 'stories#list_stories', :as => "list_stories_tags"
+  get 'list_videos_tags/:tag', to: 'videos#list_videos', :as => "list_videos_tags"
+  get 'list_pictures_tags/:tag', to: 'pictures#list_pictures', :as => "list_pictures_tags"
 
 end

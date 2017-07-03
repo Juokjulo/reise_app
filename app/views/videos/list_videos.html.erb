@@ -40,7 +40,7 @@
              <%= link_to 'Destroy', video, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger", :role => "button"  %>
           <% end %>
           <% if video.tag_list.to_s != '' %>
-            <p>Tags: <%= raw(video.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')) %></p>
+            <p>Tags: <%= raw(video.tag_list.map { |t| link_to t, list_videos_tags_path(t) }.join(', ')) %></p>
           <% end %> 
       </p>
       <div class="card-footer text-muted" >
