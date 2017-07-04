@@ -30,6 +30,7 @@
             <p>Tags: <%= raw(@story.tag_list.map { |t| link_to t, list_stories_tags_path(t) }.join(', ')) %></p>
 <% end %> 
 
+<p>
 <% if current_user.try(:admin?) %>
 	<% if @story.public %>
        <%= link_to 'Edit', edit_story_path(@story), :class => "btn btn-info", :role => "button"   %> 
@@ -39,7 +40,6 @@
     <% end %> 
 <% end %>
 
-<p>
 <%= link_to 'Back', list_stories_path(@story.country), :class => "btn btn-secondary", :role => "button"  %>
 </p>
 
