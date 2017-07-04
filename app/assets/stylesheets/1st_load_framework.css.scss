@@ -16,6 +16,7 @@ img {
 // THESE ARE EXAMPLES YOU CAN MODIFY
 // create your own classes
 // to make views framework-neutral
+
 .column {
   @extend .col-lg-10;
   @extend .col-md-10;
@@ -24,6 +25,14 @@ img {
   left:50%;
   transform: translate(-50%,0%);
 }
+
+.column-4 {
+  @extend .col-lg-4;
+  @extend .col-md-4;
+  @extend .col-sm-12;
+  @extend .text-md-left;
+}
+
 .form {
   @extend .col-md-6;
 }

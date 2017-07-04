@@ -29,19 +29,19 @@
         <% if material.material_category == material_category %>
         <tr>
         <div class="container">
-          <div class="row">
           <td>
-            <div class="col-sm-12 col-md-4 col-lg-4 col-lx-4">
+          <div class="row">
+            <div class="column-4">
               <% if material.picture.present? %>
                 <%= link_to image_tag(material.picture.image_url), material %>
               <% else %>
-                <p><%= link_to 'Show', material, :class => "btn btn-info", :role => "button" %></p>
+                <%= link_to 'Show', material, :class => "btn btn-info", :role => "button" %>
               <% end %>
             </div>
-            <div class="col-sm-12 col-md-4 col-lg-4 col-lx-4">
+            <div class="column-4">
               <%= link_to material.name , material %>
             </div>  
-            <div class="col-sm-12 col-md-4 col-lg-4 col-lx-4">
+            <div class="column-4">
               <%= link_to material.sponsor, material.sponsor_link, target: '_blank' %>
               <% if material.amazon_link.present? %>
                 <%= link_to 'Buy it here *' , material.amazon_link, target: '_blank', class: 'tooltips', title: 'This is an affiliate link to Amazon. If you purchase any products on Amazon with this link you support us with no extra costs for you.', data: { toggle: 'tooltip', placement: 'top', original_title: 'Link to Amazon' }  %>
@@ -49,12 +49,14 @@
             </div>
               <% if current_user.try(:admin?) %>
               <div class="col-sm-12 col-md-12 col-lg-12 col-lx-12">
+                <p>
                 <%= link_to 'Edit', edit_material_path(material), :class => "btn btn-primary", :role => "button"%>
                 <%= link_to 'Destroy', material, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger", :role => "button" %>
+                </p>
               </div>
               <% end %>
+              </div>
               </td>
-          </div>
         </div>
         </tr>
         <% end %>
