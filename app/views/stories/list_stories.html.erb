@@ -18,6 +18,7 @@
 
 <% @stories.each do |story| %>
  <% if current_user.try(:admin?) or story.public %>
+ <p>
   <div class="card" >
     <div class="card-header" >
       <h4 class="card-title">
@@ -59,6 +60,7 @@
           written by <%= story.user.name %>   in <%= link_to story.country.name , list_stories_path(story.country) %>  on <%= story.created_at.strftime("%A, the %-d %B %Y") %>, last update on <%= story.updated_at.strftime("%A, the %-d %B %Y")  %>
       </div>
    </div>
+  </p>
   <% end %>
 <% end %>
 
