@@ -11,7 +11,9 @@
   <%= @newsletter.letter %>
 </p>
 
+<p>
 <%= link_to 'Edit', edit_newsletter_path(@newsletter), :class => "btn btn-info", :role => "button"  %> 
 <%= link_to 'Back', newsletters_path, :class => "btn btn-secondary", :role => "button"  %>
+</p>
 
 <%= render 'layouts/container_end' %>

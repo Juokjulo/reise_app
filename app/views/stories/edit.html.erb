@@ -4,7 +4,9 @@
 
 <%= render 'form', story: @story %>
 
+<p>
 <%= link_to 'Show', @story, :class => "btn btn-success", :role => "button"  %> 
 <%= link_to 'Back', stories_path, :class => "btn btn-secondary", :role => "button"  %>
+</p>
 
 <%= render 'layouts/container_end' %>

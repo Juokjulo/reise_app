@@ -22,9 +22,12 @@
 </p>
 
 <% end %>
+
+<p>
 <% if current_user.try(:admin?) %>
 	<%= link_to 'Edit', edit_material_path(@material), :class => "btn btn-primary", :role => "button" %> 
 <% end %>
 <%= link_to 'Back', materials_path, :class => "btn btn-primary", :role => "button" %>
+</p>
 
 <%= render 'layouts/container_end' %>

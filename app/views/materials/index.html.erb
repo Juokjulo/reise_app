@@ -68,9 +68,9 @@
   </div>
 <% end %>
 
-* There are some affiliate links to Amazon. If you purchase any products on Amazon with this link you support us with no extra costs for you. 
+* There are some affiliate links to Amazon. If you purchase any products on Amazon with these links you support us with no extra costs for you. 
 <br>
 <% if current_user.try(:admin?) %>
-  <%= link_to 'New Material', new_material_path, :class => "btn btn-primary", :role => "button" %>
+  <p><%= link_to 'New Material', new_material_path, :class => "btn btn-primary", :role => "button" %></p>
 <% end %>
 <%= render 'layouts/container_end' %>

@@ -4,6 +4,8 @@
 
 <%= render 'form', video: @video %>
 
-<%= link_to 'Back', videos_path %>
+<p>
+<%= link_to 'Back', videos_path, :class => "btn btn-secondary", :role => "button" %>
+</p>
 
 <%= render 'layouts/container_end' %>

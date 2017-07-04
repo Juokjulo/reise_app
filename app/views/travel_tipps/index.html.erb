@@ -32,7 +32,7 @@
 
 <% if current_user.try(:admin?) %>
 
-<%= link_to 'New Travel Tipp', new_travel_tipp_path %>
+<p><%= link_to 'New Travel Tipp', new_travel_tipp_path, :class => "btn btn-primary", :role => "button" %></p>
 
 <% end %>
 <%= render 'layouts/container_end' %>

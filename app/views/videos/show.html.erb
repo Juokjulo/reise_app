@@ -25,7 +25,9 @@
   <iframe class="embed-responsive-item"  width="560" height="315" src=<%= @video.url %> allowfullscreen></iframe>
 </div>
 
-<%= link_to 'Edit', edit_video_path(@video) %> |
-<%= link_to 'Back', videos_path %>
+<p>
+<%= link_to 'Edit', edit_video_path(@video), :class => "btn btn-success", :role => "button" %>
+<%= link_to 'Back', videos_path, :class => "btn btn-secondary", :role => "button" %>
+</p>
 
 <%= render 'layouts/container_end' %>
