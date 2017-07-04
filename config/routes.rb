@@ -16,6 +16,9 @@ Rails.application.routes.draw do
   get "list_travel_tipps/:country" => "travel_tipps#list_travel_tipps", :as => "list_travel_tipps"
   devise_for :users
   resources :users
+  get "reset_password/:userid" => "users#reset_password", :as => "reset_password"
+  patch "update_password/:userid" => "users#update_password", :as => "update_password"
+
   resources :stories, shallow: true do
   	resources :storytexts
   end
@@ -28,5 +31,6 @@ Rails.application.routes.draw do
   get 'list_stories_tags/:tag', to: 'stories#list_stories', :as => "list_stories_tags"
   get 'list_videos_tags/:tag', to: 'videos#list_videos', :as => "list_videos_tags"
   get 'list_pictures_tags/:tag', to: 'pictures#list_pictures', :as => "list_pictures_tags"
+
 
 end
