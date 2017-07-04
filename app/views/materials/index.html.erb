@@ -70,8 +70,11 @@
   </div>
 <% end %>
 
+<p class="text-muted" >
 * There are some affiliate links to Amazon. If you purchase any products on Amazon with these links you support us with no extra costs for you. 
 <br>
+</p>
+
 <% if current_user.try(:admin?) %>
   <p><%= link_to 'New Material', new_material_path, :class => "btn btn-primary", :role => "button" %></p>
 <% end %>

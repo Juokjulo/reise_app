@@ -1,0 +1,18 @@
+<% content_for :title do %>Support us<% end %>
+<%= render 'layouts/container' %>
+<h3>Support us</h3>
+<p>
+You are supporting us by buying anything on Amazon using this link:
+</p>
+<p>
+<%= link_to 'Support us *' , "http://amzn.to/2tcEcas", :class => "btn btn-success", :role => "button", target: '_blank'  %>
+</p>
+<p class="text-muted" >
+* This is an affiliate link to Amazon. If you purchase any products on Amazon with this link you support us with no extra costs for you.
+</p>
+
+<p>
+If you want to know, what affiliate links are, than read more about the partnernet of Amazon here: <%= link_to 'partnernet Amazon' , "https://partnernet.amazon.de/", target: '_blank'  %>
+</p>
+
+<%= render 'layouts/container_end' %>
