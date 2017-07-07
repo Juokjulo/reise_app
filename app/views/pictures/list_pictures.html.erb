@@ -24,7 +24,7 @@
               <%= image_tag(picture.image_url, :class =>"card-img-top", :height => "200px" ) if picture.image.present? %></a>
                 <div class="card-block">
                       <h4 class="card-title"><%= picture.name %></h4>
-                      <p class="card-text"><%= picture.description %></p>
+                      <p class="card-text"><%== picture.description %></p>
                       <%= link_to 'Show', picture, :class => "btn btn-success", :role => "button"  %>
               <% if current_user.try(:admin?) %>
                 <% if picture.public %>
