@@ -4,4 +4,5 @@ class Country < ApplicationRecord
 	has_many :travelTipps
 	has_many :stories
 	has_many :videos
+	has_many :comments, as: :commentable
 end

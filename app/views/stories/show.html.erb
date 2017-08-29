@@ -43,6 +43,8 @@
 <%= link_to 'Back', list_stories_path(@story.country), :class => "btn btn-secondary", :role => "button"  %>
 </p>
 
+<%= render :partial => "shared/comments", :locals => { :commentable => @story } %>
+
 <%= render 'layouts/container_end' %>
 
 

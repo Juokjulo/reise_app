@@ -28,4 +28,6 @@
 <%= link_to 'Back', list_pictures_path(@picture.country), :class => "btn btn-secondary", :role => "button"   %>
 </p>
 
+<%= render :partial => "shared/comments", :locals => { :commentable => @picture } %>
+
 <%= render 'layouts/container_end' %>

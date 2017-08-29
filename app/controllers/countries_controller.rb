@@ -11,6 +11,9 @@ class CountriesController < ApplicationController
   # GET /countries/1
   # GET /countries/1.json
   def show
+    @commentable = @country
+    @comments = @commentable.comments
+    @comment = Comment.new
   end
 
   # GET /countries/new
@@ -61,6 +64,7 @@ class CountriesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

@@ -12,10 +12,14 @@
   <%== @country.shortDescription %>
 </p>
 
+<p>
 <% if current_user.try(:admin?) %>
 	<%= link_to 'Edit', edit_country_path(@country), :class => "btn btn-info", :role => "button"   %> 
 <% end %>
 
 <%= link_to 'Back', list_stories_path(@country), :class => "btn btn-secondary", :role => "button"  %>
+</p>
+
+<%= render :partial => "shared/comments", :locals => { :commentable => @country } %>
 
 <%= render 'layouts/container_end' %>

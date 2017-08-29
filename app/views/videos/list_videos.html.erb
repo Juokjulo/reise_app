@@ -17,6 +17,7 @@
 
 <% @videos.each do |video| %>
  <% if current_user.try(:admin?) or video.public %>
+ <p>
   <div class="card" >
     <div class="card-header" >
       <h4 class="card-title">
@@ -43,10 +44,12 @@
             <p>Tags: <%= raw(video.tag_list.map { |t| link_to t, list_videos_tags_path(t) }.join(', ')) %></p>
           <% end %> 
       </p>
+
       <div class="card-footer text-muted" >
           published in <%= link_to video.country.name , list_videos_path(video.country) %>  on <%= video.created_at.strftime("%A, the %-d %B %Y") %>, last update on <%= video.updated_at.strftime("%A, the %-d %B %Y")  %>
       </div>
    </div>
+   </p>
   <% end %>
 <% end %>
 

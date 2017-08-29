@@ -24,6 +24,8 @@ class PicturesController < ApplicationController
   # GET /pictures/1
   # GET /pictures/1.json
   def show
+    @commentable = @picture
+    @comments = @commentable.comments
   end
 
   # GET /pictures/new

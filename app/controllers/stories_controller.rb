@@ -24,6 +24,8 @@ class StoriesController < ApplicationController
   # GET /stories/1
   # GET /stories/1.json
   def show
+    @commentable = @story
+    @comments = @commentable.comments
   end
 
   # GET /stories/new

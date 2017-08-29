@@ -1,0 +1,58 @@
+<% if commentable.comments.empty? %>
+ 
+<% else %>
+
+  <% for comment in commentable.comments %>
+  <p>
+   <div class="card" >
+    <div class="card-header" >
+      <h5 class="card-title">
+        <%= comment.title %>
+      </h5>
+    </div>
+      <p class="card-text">
+	    <%= comment.content %>
+	   <div class="card-footer text-muted" >
+          Added by <strong><%= User.find(comment.user_id).name %></strong> on
+	    <%= l(comment.created_at, format: '%B, %d %Y %H:%M:%S') %>
+      <% if current_user.try(:admin?) %><%= comment.email %><% end %>
+      </div>
+	</div>
+	</p>
+  <% end %>
+<% end %>
+
+<% if user_signed_in? %>
+<div class="card" >
+    <div class="card-header" >
+      <h4 class="card-title">
+        Add new a comment as <%= current_user.name %>
+      </h4>
+    </div>
+      <p class="card-text">
+
+<%= form_for [commentable, Comment.new()] do |f| %>
+
+  <div class="form-group">
+    <%= f.label :title %>
+    <%= f.text_field :title, :class => "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :email %> (invisible)
+    <%= f.text_field :email, :class => "form-control", :placeholder => current_user.email %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :content %>
+    <%= f.text_area :content, :class => "form-control", rows: 5 %>
+  </div>
+
+  <%= f.submit %>
+<% end %>
+</p>
+</div>
+<% else %>
+ <p><%= link_to 'Sign in to comment', new_user_session_path, :class => "btn btn-info", :role => "button" %></p>
+ <p><%= link_to 'Sign up to comment', new_user_registration_path, :class => "btn btn-primary", :role => "button" %></p>
+<% end %>
