@@ -125,6 +125,11 @@ GEM
     nio4r (2.1.0)
     nokogiri (1.8.0)
       mini_portile2 (~> 2.2.0)
+    octicons (4.0.2)
+      nokogiri (>= 1.6.3.1)
+    octicons_helper (4.0.1)
+      octicons (~> 4.0)
+      rails
     orm_adapter (0.5.0)
     puma (3.9.1)
     rack (2.0.3)
@@ -231,6 +236,7 @@ DEPENDENCIES
   jquery-rails
   listen (~> 3.0.5)
   mysql2
+  octicons_helper
   puma (~> 3.0)
   rails (~> 5.0.0, >= 5.0.0.1)
   rails-assets-chosen!
