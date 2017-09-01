@@ -1,4 +1,4 @@
-<div class="text-right"><small><%= @story.comments.count %><%= octicon "comment", :height => 18,  :class => "right", :"aria-label" => "comments" %></small></div> 
+<div class="text-right"><small><%= commentable.comments.count %><%= octicon "comment", :height => 18,  :class => "right", :"aria-label" => "comments" %></small></div> 
 
 <% if commentable.comments.empty? %>
  

@@ -23,6 +23,7 @@
         <a href=<%= picture.image_url%> title=<%= picture.name %> data-gallery>
               <%= image_tag(picture.image_url, :class =>"card-img-top", :height => "200px" ) if picture.image.present? %></a>
                 <div class="card-block">
+                      <div class="text-right"><small><%= picture.comments.count %><%= octicon "comment", :height => 18,  :class => "right", :"aria-label" => "comments" %></small></div> 
                       <h4 class="card-title"><%= picture.name %></h4>
                       <p class="card-text"><%== picture.description %></p>
                       <%= link_to 'Show', picture, :class => "btn btn-success", :role => "button"  %>
