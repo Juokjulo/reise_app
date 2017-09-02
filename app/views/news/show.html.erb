@@ -1,0 +1,26 @@
+<%= render 'layouts/container' %>
+
+<p>
+  <strong>Text:</strong>
+  <%= @news.text %>
+</p>
+
+<p>
+  <strong>Text link:</strong>
+  <%= @news.text_link %>
+</p>
+
+<p>
+  <strong>Link:</strong>
+  <%= @news.link %>
+</p>
+
+<p>
+  <strong>Color:</strong>
+  <%= @news.color %>
+</p>
+
+<%= link_to 'Edit', edit_news_path(@news) %> |
+<%= link_to 'Back', news_index_path %>
+
+<%= render 'layouts/container_end' %>
