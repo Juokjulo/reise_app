@@ -13,6 +13,7 @@
 
 <p>Newsletter: 
 <% @users.each do |user| %>
-              <%= user.email + "; " if user.newsletter_abo %></p>
+              <%= user.email + "; " if user.newsletter_abo %>
           <% end %>
+</p>
 <%= render 'layouts/container_end' %>
