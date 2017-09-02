@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170902101311) do
+ActiveRecord::Schema.define(version: 20170902113001) do
 
   create_table "comments", force: :cascade do |t|
     t.string   "title"
@@ -81,6 +81,15 @@ ActiveRecord::Schema.define(version: 20170902101311) do
     t.datetime "updated_at",  null: false
     t.boolean  "public"
     t.index ["country_id"], name: "index_pictures_on_country_id"
+  end
+
+  create_table "routes", force: :cascade do |t|
+    t.string   "title"
+    t.text     "maplink"
+    t.text     "description"
+    t.string   "garminlink"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "stories", force: :cascade do |t|

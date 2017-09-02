@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :routes
   resources :news
   get 'comments/index'
   get 'comments/new'

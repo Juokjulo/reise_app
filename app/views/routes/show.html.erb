@@ -1,0 +1,26 @@
+<%= render 'layouts/container' %>
+
+<p>
+  <strong>Title:</strong>
+  <%= @route.title %>
+</p>
+
+<p>
+  <strong>Maplink:</strong>
+  <%= @route.maplink %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @route.description %>
+</p>
+
+<p>
+  <strong>Garminlink:</strong>
+  <%= @route.garminlink %>
+</p>
+
+<%= link_to 'Edit', edit_route_path(@route) %> |
+<%= link_to 'Back', routes_path %>
+
+<%= render 'layouts/container_end' %>
