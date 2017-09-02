@@ -8,16 +8,17 @@
   <p>
    <div class="card" >
     <div class="card-header" >
-      <h5 class="card-title">
+      <h6 class="card-title">
         <%= comment.title %>
-      </h5>
+      </h6>
     </div>
       <p class="card-text">
-	    <%= comment.content %>
+	    <%= comment.content %></p>
 	   <div class="card-footer text-muted" >
-          Added by <strong><%= User.find(comment.user_id).name %></strong> on
+          <small>Added by <strong><%= User.find(comment.user_id).name %></strong> on
 	    <%= l(comment.created_at, format: '%B, %d %Y %H:%M:%S') %>
       <% if current_user.try(:admin?) %><%= comment.email %><% end %>
+      </small>
       </div>
 	</div>
 	</p>
@@ -27,9 +28,9 @@
 <% if user_signed_in? %>
 <div class="card" >
     <div class="card-header" >
-      <h4 class="card-title">
-        Add new a comment as <%= current_user.name %>
-      </h4>
+      <h6 class="card-title">
+        Add a new comment as <%= current_user.name %>
+      </h6>
     </div>
       <p class="card-text">
 
