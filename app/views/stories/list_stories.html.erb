@@ -2,7 +2,7 @@
 <%= render 'layouts/container' %>
 
 
-<h1>Stories</h1>
+<h1>Stories <%= ' in ' + @country.name if @country != nil %></h1>
 
 <% if @country != nil %>
   <p>

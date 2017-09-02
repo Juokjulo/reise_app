@@ -1,6 +1,6 @@
 <% content_for :title do %>Pictures<% end %>
 <%= render 'layouts/container' %>
-  <h1>Pictures</h1>
+  <h1>Pictures<%= ' in ' + @country.name if @country != nil %></h1>
 
 <% if @country != nil %>
   <p>
