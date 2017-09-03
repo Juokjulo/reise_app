@@ -3,7 +3,7 @@
 
 <%= render 'form', route: @route %>
 
-<%= link_to 'Show', @route %> |
-<%= link_to 'Back', routes_path %>
+<p><%= link_to 'Show', @route, :class => "btn btn-success", :role => "button"  %> 
+<%= link_to 'Back', routes_path, :class => "btn btn-secondary", :role => "button"  %></p>
 
 <%= render 'layouts/container_end' %>

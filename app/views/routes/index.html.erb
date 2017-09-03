@@ -15,9 +15,9 @@
           </br>
           <%= link_to 'Live tracking Garmin (only for family)', route.garminlink, target: '_blank' %>
           <% if current_user.try(:admin?) %>
-            <%= link_to 'Show', route %>
-            <%= link_to 'Edit', edit_route_path(route) %>
-            <%= link_to 'Destroy', route, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <p><%= link_to 'Show', route, :class => "btn btn-success", :role => "button"  %>
+            <%= link_to 'Edit', edit_route_path(route), :class => "btn btn-primary", :role => "button"  %>
+            <%= link_to 'Destroy', route, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger", :role => "button"  %></p>
            <% end %>
           </p>      
       </div>
@@ -26,7 +26,7 @@
 
 <br>
 <% if current_user.try(:admin?) %>
-<%= link_to 'New Route', new_route_path %>
+<p><%= link_to 'New Route', new_route_path, :class => "btn btn-primary", :role => "button"  %></p>
 <% end %>
 
 <%= render 'layouts/container_end' %>
