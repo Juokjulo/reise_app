@@ -17,6 +17,9 @@ Rails.application.routes.draw do
   resources :pictures
   resources :newsletters
   root to: 'visitors#index'
+  get "pictures/new/:country" => "pictures#new", :as => "new_picture_country" 
+  get "stories/new/:country" => "stories#new", :as => "new_story_country" 
+  get "videos/new/:country" => "videos#new", :as => "new_video_country" 
   get "list_stories/:country" => "stories#list_stories", :as => "list_stories"
   get "list_pictures/:country" => "pictures#list_pictures", :as => "list_pictures"
   get "list_videos/:country" => "videos#list_videos", :as => "list_videos"

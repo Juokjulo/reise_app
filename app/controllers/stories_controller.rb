@@ -31,6 +31,11 @@ class StoriesController < ApplicationController
   # GET /stories/new
   def new
     @story = Story.new
+    if params[:country]
+      @country = Country.find(params[:country])
+    else
+       @country = Country.first
+    end
   end
 
  

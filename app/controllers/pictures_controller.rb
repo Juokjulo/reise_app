@@ -31,6 +31,11 @@ class PicturesController < ApplicationController
   # GET /pictures/new
   def new
     @picture = Picture.new
+    if params[:country]
+      @country = Country.find(params[:country])
+    else
+       @country = Country.first
+    end
   end
 
   # GET /pictures/1/edit

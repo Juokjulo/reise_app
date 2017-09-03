@@ -9,7 +9,7 @@
   <%= link_to 'Travel Tipps', list_travel_tipps_path(@country), :class => "btn btn-secondary", :role => "button"  %>
   <%= link_to 'Show Country', @country, :class => "btn btn-secondary", :role => "button"  %>
   <% if current_user.try(:admin?) %>
-    <%= link_to 'New Picture', new_picture_path, :class => "btn btn-primary", :role => "button"  %>
+    <%= link_to 'New Picture', new_picture_country_path(@country), :class => "btn btn-primary", :role => "button"  %>
   <% end %>
   </p>
 <% end %>

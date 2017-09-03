@@ -28,6 +28,11 @@ class VideosController < ApplicationController
   # GET /videos/new
   def new
     @video = Video.new
+    if params[:country]
+      @country = Country.find(params[:country])
+    else
+       @country = Country.first
+    end
   end
 
   # GET /videos/1/edit
