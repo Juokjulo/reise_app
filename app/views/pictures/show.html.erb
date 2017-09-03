@@ -13,6 +13,9 @@
   <%== @picture.description %>
 </p>
 
+<% if @picture.tag_list.to_s != '' %>
+                    <p>Tags: <%= raw(@picture.tag_list.map { |t| link_to t, list_pictures_tags_path(t) }.join(', ')) %></p>
+<% end %>
 
 <% end %>  
 

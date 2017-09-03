@@ -8,6 +8,7 @@ class PicturesController < ApplicationController
     @pictures = Picture.all
     @countries = Country.all
     @path = 'country_pictures_path' 
+    @tags = Picture.where(public: true).tag_counts_on(:tags)
     render 'countries/list', path: @path 
   end
 
@@ -91,6 +92,6 @@ class PicturesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def picture_params
-      params.require(:picture).permit(:name, :description, :image, :country_id, :public)
+      params.require(:picture).permit(:name, :description, :image, :country_id, :public, :tag_list, :tag, { tag_ids: [] })
     end
 end

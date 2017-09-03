@@ -8,6 +8,7 @@ class VideosController < ApplicationController
     @videos = Video.all
     @countries = Country.all
     @path = 'country_videos_path' 
+    @tags = Video.where(public: true).tag_counts_on(:tags)
     render 'countries/list', path: @path 
   end
 

@@ -36,6 +36,9 @@
                 <% end %>
                 <%= link_to 'Destroy', picture, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger", :role => "button"  %>
             <% end %>
+                  <% if picture.tag_list.to_s != '' %>
+                    <p>Tags: <%= raw(picture.tag_list.map { |t| link_to t, list_pictures_tags_path(t) }.join(', ')) %></p>
+                  <% end %>
                  </div>
                   <div class="card-footer">
       <small class="text-muted">Posted in <%= link_to picture.country.name , list_pictures_path(picture.country) %>  on <%= picture.created_at.strftime("%-d.%-m.%Y") %>, last update on <%= picture.updated_at.strftime("%-d.%-m.%Y")  %></small>

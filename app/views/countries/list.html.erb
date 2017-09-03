@@ -58,6 +58,20 @@
     <% end %>
     </div>
   <% end %>
+  <% if @path == 'country_pictures_path' %>     
+    <div id="tag_cloud">
+    <% tag_cloud(@tags, %w[xxs xs s m l xl xxl]) do |tag, css_class| %>
+      <%= link_to tag.name, list_pictures_tags_path(tag.name) , :class => css_class %>
+    <% end %>
+    </div>
+  <% end %>
+  <% if @path == 'country_videos_path' %>     
+    <div id="tag_cloud">
+    <% tag_cloud(@tags, %w[xxs xs s m l xl xxl]) do |tag, css_class| %>
+      <%= link_to tag.name, list_videos_tags_path(tag.name) , :class => css_class %>
+    <% end %>
+    </div>
+  <% end %>
 <% end %>
 <br>
 <%= render 'layouts/container_end' %>

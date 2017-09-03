@@ -36,6 +36,10 @@ $(function () {
       allow_single_deselect: true,
       width: '100%'
     })
+    $('#picture_tag_ids').chosen({
+      allow_single_deselect: true,
+      width: '100%'
+    })
     $(".story_picture_id").chosen()
     $('[data-toggle="tooltip"]').tooltip()
 });
@@ -46,6 +50,10 @@ $(function () {
       width: '100%'
     })
     $('#video_tag_ids').chosen({
+      allow_single_deselect: true,
+      width: '100%'
+    })
+    $('#picture_tag_ids').chosen({
       allow_single_deselect: true,
       width: '100%'
     })
