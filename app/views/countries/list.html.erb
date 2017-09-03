@@ -50,6 +50,7 @@
       <%= link_to 'New Story', new_story_path, :class => "btn btn-primary", :role => "button"  %>
       <%= link_to 'New Video', new_video_path, :class => "btn btn-primary", :role => "button"  %>
       <%= link_to 'New Country', new_country_path, :class => "btn btn-primary", :role => "button"  %></p>
+<% end %>
 
   <% if @path == 'country_stories_path' %>     
     <div id="tag_cloud">
@@ -72,7 +73,7 @@
     <% end %>
     </div>
   <% end %>
-<% end %>
+
 <br>
 <%= render 'layouts/container_end' %>
 
