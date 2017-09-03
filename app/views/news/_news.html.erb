@@ -16,9 +16,21 @@
         <%= news.text %>
         <%= link_to news.text_link, news.link, style:"color:" + news.color  %>
         <% if current_user.try(:admin?) %>
-          <p><%= link_to 'Show', news, :class => "btn btn-success", :role => "button"  %>
-          <%= link_to 'Edit', edit_news_path(news), :class => "btn btn-primary", :role => "button"  %>
-          <%= link_to 'Destroy', news, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger", :role => "button"  %></p>
+          <p>
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-4 col-md-4 col-lg-4 col-lx-4">
+                <%= link_to 'Show', news, :class => "btn btn-success", :role => "button"  %>
+              </div>
+              <div class="col-sm-4 col-md-4 col-lg-4 col-lx-4">
+                <%= link_to 'Edit', edit_news_path(news), :class => "btn btn-primary", :role => "button"  %>
+              </div>
+              <div class="col-sm-4 col-md-4 col-lg-4 col-lx-4">
+                <%= link_to 'Destroy', news, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger", :role => "button"  %>
+              </div>
+            </div>
+          </div>
+          </p>
         <% end %>
       </div>
       <% end %>
