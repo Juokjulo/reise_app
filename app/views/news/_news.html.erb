@@ -1,17 +1,27 @@
+<div style=<%= "color:" + @news.last.color  %> >
+        <h3 style=<%= "color:" + @news.last.color  %> >
+        <%= @news.last.text %>
+        <%= link_to @news.last.text_link, @news.last.link, style:"color:" + @news.last.color  %>
+        </h3>
+        <% if current_user.try(:admin?) %>
+          <p><%= link_to 'Show', @news.last, :class => "btn btn-success", :role => "button"  %>
+          <%= link_to 'Edit', edit_news_path(@news.last), :class => "btn btn-primary", :role => "button"  %>
+          <%= link_to 'Destroy', @news.last, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger", :role => "button"  %></p>
+        <% end %>
+</div>
 
 <% @news.each do |news| %>
-
+        <% if (news != @news.last) %>
         <div style=<%= "color:" + news.color  %> >
-        <%== "<h3 style='color:" + news.color + "'>" if (news == @news.first) %>
         <%= news.text %>
         <%= link_to news.text_link, news.link, style:"color:" + news.color  %>
-        <%== "</h3>" if (news == @news.first) %>
         <% if current_user.try(:admin?) %>
           <p><%= link_to 'Show', news, :class => "btn btn-success", :role => "button"  %>
           <%= link_to 'Edit', edit_news_path(news), :class => "btn btn-primary", :role => "button"  %>
           <%= link_to 'Destroy', news, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger", :role => "button"  %></p>
         <% end %>
       </div>
+      <% end %>
 <% end %>
 
 
