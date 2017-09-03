@@ -15,9 +15,9 @@
       <p class="card-text">
 	    <%= comment.content %></p>
 	   <div class="card-footer text-muted" >
-          <small>Added by <strong><%= User.find(comment.user_id).name %></strong> on
+          <small>Added by <strong><% if current_user.try(:admin?) %><%= link_to User.find(comment.user_id).name, User.find(comment.user_id) %><% end %><% if ! current_user.try(:admin?) %><%= User.find(comment.user_id).name %><% end %></strong> on
 	    <%= l(comment.created_at, format: '%B, %d %Y %H:%M:%S') %>
-      <% if current_user.try(:admin?) %><%= comment.email %><% end %>
+      <% if current_user.try(:admin?) %><%= " " + comment.email %><% end %>
       </small>
       </div>
 	</div>
