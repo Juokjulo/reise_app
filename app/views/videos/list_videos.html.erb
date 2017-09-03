@@ -2,7 +2,7 @@
 <%= render 'layouts/container' %>
 
 
-<h1>Videos <%= ' in ' + @country.name if @country != nil %></h1>
+<h1>Videos <%= ' in ' + @country.name if @country != nil %> <%= octicon "device-camera-video", :height => 35,  :class => "right", :"aria-label" => "device-camera-video" %></h1>
 <% if @country != nil %>
   <p>
   <%= link_to 'Pictures', list_pictures_path(@country), :class => "btn btn-secondary", :role => "button"  %>

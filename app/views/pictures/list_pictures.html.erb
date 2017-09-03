@@ -1,6 +1,6 @@
 <% content_for :title do %>Pictures<% end %>
 <%= render 'layouts/container' %>
-  <h1>Pictures<%= ' in ' + @country.name if @country != nil %></h1>
+  <h1>Pictures<%= ' in ' + @country.name if @country != nil %> <%= octicon "device-camera", :height => 35,  :class => "right", :"aria-label" => "device-camera" %></h1>
 
 <% if @country != nil %>
   <p>

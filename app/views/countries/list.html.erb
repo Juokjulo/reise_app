@@ -4,10 +4,10 @@
 <h1>Stories</h1>
 <% end %>
 <% if @path == 'country_pictures_path'%>
-<h1>Galery/Photos</h1>
+<h1>Galery/Photos <%= octicon "device-camera", :height => 35,  :class => "right", :"aria-label" => "device-camera" %></h1>
 <% end %>
 <% if @path == 'country_videos_path'%>
-<h1>Galery/Videos</h1>
+<h1>Galery/Videos <%= octicon "device-camera-video", :height => 35,  :class => "right", :"aria-label" => "device-camera-video" %></h1>
 <% end %>
 
 <div class="container">
