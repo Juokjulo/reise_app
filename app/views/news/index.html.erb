@@ -21,9 +21,9 @@
         <td><%= news.text_link %></td>
         <td><%= news.link %></td>
         <td><%= news.color %></td>
-        <td><%= link_to 'Show', news %></td>
-        <td><%= link_to 'Edit', edit_news_path(news) %></td>
-        <td><%= link_to 'Destroy', news, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', news, :class => "btn btn-success", :role => "button"  %></td>
+        <td><%= link_to 'Edit', edit_news_path(news), :class => "btn btn-primary", :role => "button"  %></td>
+        <td><%= link_to 'Destroy', news, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger", :role => "button"  %></td>
       </tr>
     <% end %>
   </tbody>
@@ -31,6 +31,6 @@
 
 <br>
 
-<%= link_to 'New News', new_news_path %>
+<p><%= link_to 'New News', new_news_path, :class => "btn btn-primary", :role => "button"  %></p>
 
 <%= render 'layouts/container_end' %>

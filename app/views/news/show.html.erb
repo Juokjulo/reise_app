@@ -20,7 +20,7 @@
   <%= @news.color %>
 </p>
 
-<%= link_to 'Edit', edit_news_path(@news) %> |
-<%= link_to 'Back', news_index_path %>
+<p><%= link_to 'Edit', edit_news_path(@news), :class => "btn btn-primary", :role => "button"  %> 
+<%= link_to 'Back', news_index_path, :class => "btn btn-secondary", :role => "button"  %></p>
 
 <%= render 'layouts/container_end' %>

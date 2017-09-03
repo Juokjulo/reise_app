@@ -1,4 +1,4 @@
 <%= render :partial => "news/news"%>
 <% if current_user.try(:admin?) %>
-<p><%= link_to 'Users:', users_path %> <%= User.count %> registered</p>
+<p style="background-color: white"><%= link_to 'Users:', users_path %> <%= User.count %> registered</p>
  <% end %>

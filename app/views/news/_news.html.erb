@@ -7,9 +7,9 @@
         <%= link_to news.text_link, news.link, style:"color:" + news.color  %>
         <%== "</h3>" if (news == @news.first) %>
         <% if current_user.try(:admin?) %>
-          <%= link_to 'Show', news %>
-          <%= link_to 'Edit', edit_news_path(news) %>
-          <%= link_to 'Destroy', news, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <p><%= link_to 'Show', news, :class => "btn btn-success", :role => "button"  %>
+          <%= link_to 'Edit', edit_news_path(news), :class => "btn btn-primary", :role => "button"  %>
+          <%= link_to 'Destroy', news, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger", :role => "button"  %></p>
         <% end %>
       </div>
 <% end %>
@@ -17,5 +17,5 @@
 
 <br>
  <% if current_user.try(:admin?) %>
-<%= link_to 'New News', new_news_path %>
+<p><%= link_to 'New News', new_news_path, :class => "btn btn-primary", :role => "button"  %></p>
 <% end %>
