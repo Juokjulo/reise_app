@@ -15,7 +15,9 @@
     <div class="links">
         <%= link_to_add_association 'add picture', f, :storytext_pictures, :class => "btn btn-success", :role => "button"  %>
     </div>
+    <div  align="right">
     <%= f.hidden_field :_destroy %>
-    <%= link_to_remove_association "remove stortext", f, {wrapper_class: 'stortext-fields'}, :class => "btn btn-danger", :role => "button"  %>
+    <%= link_to_remove_association "remove stortext", f, {wrapper_class: 'stortext-fields', :class => "btn btn-danger", :role => "button"}%>
+    </div>
 </div>
   
