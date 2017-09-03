@@ -42,6 +42,7 @@ class StoriesController < ApplicationController
 
   # GET /stories/1/edit
   def edit
+    @country = @story.country
   end
 
   # POST /stories

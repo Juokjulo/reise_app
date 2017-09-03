@@ -40,6 +40,7 @@ class PicturesController < ApplicationController
 
   # GET /pictures/1/edit
   def edit
+      @country = @picture.country
   end
 
   # POST /pictures
