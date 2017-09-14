@@ -17,6 +17,11 @@
   </div>
 
   <div class="form-group">
+    <%= f.label :created_at %>
+    <%= f.text_field :created_at, :placeholder => story.created_at  %>
+  </div>
+
+  <div class="form-group">
     <%= f.label :short_description %>
     <%= f.text_area :short_description, :class => "form-control", rows: 10  %>
   </div>

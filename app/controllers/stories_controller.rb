@@ -65,7 +65,7 @@ class StoriesController < ApplicationController
   # PATCH/PUT /stories/1
   # PATCH/PUT /stories/1.json
   def update
-    
+    @story.created_at = :created_at
     respond_to do |format|
       if @story.update(story_params)
         format.html { redirect_to @story, notice: 'Story was successfully updated.' }
@@ -95,6 +95,6 @@ class StoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def story_params
-      params.require(:story).permit(:title, :short_description, :public, :country_id, :picture_id, :user_id, :tag_list, :tag, { tag_ids: [] }, storytexts_attributes: [ :title, :storypart, :id, :_destroy, storytext_pictures_attributes: [ :options, :size, :id, :picture_id, :_destroy ]])
+      params.require(:story).permit(:title, :created_at, :short_description, :public, :country_id, :picture_id, :user_id, :tag_list, :tag, { tag_ids: [] }, storytexts_attributes: [ :title, :storypart, :id, :_destroy, storytext_pictures_attributes: [ :options, :size, :id, :picture_id, :_destroy ]])
     end
 end
