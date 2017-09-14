@@ -24,8 +24,8 @@
       <div class="container">
             <div class="row">
               <div class="col-sm-12 col-md-10 col-lg-10 col-lx-10">
-                <h4 class="card-title">
-                  <%= story.title %>
+                <h4 class="card-title" >
+                  <%= link_to story.title, story, :style => "color: black" %>
                 </h4>
               </div>
               <div class="text-right col-sm-12 col-md-2 col-lg-2 col-lx-2"><small><%= story.comments.count %><%= octicon "comment", :height => 18,  :class => "right", :"aria-label" => "comments" %></small></div>  
@@ -43,7 +43,9 @@
         <% if story.picture.present? %>
               </div>
               <div class="col-sm-12 col-md-6 col-lg-6 col-lx-6">
-                <%= image_tag(story.picture.image_url, :width => "100%") if story.picture.present? %>
+                <%= link_to story  do %>
+                  <%= image_tag(story.picture.image_url, :width => "100%") if story.picture.present? %>
+                <% end %>
               </div>
             </div>
           </div>
