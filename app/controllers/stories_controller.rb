@@ -5,7 +5,7 @@ class StoriesController < ApplicationController
   # GET /stories
   # GET /stories.json
   def index
-    @stories = Story.all
+    @stories = Story.order('stories.created_at ASC').all
     @countries = Country.all
     @path = 'country_stories_path' 
     @tags = Story.where(public: true).tag_counts_on(:tags)
@@ -14,10 +14,10 @@ class StoriesController < ApplicationController
 
   def list_stories
     if params[:tag]
-      @stories = Story.tagged_with(params[:tag])
+      @stories = Story.order('stories.created_at ASC').tagged_with(params[:tag])
     else
       @country = Country.find(params[:country])
-      @stories = Story.where(country_id: @country).all
+      @stories = Story.order('stories.created_at ASC').where(country_id: @country).all
     end
   end
  
