@@ -2,32 +2,43 @@
 <%= render 'layouts/container' %>
 
 <p>
-  <strong>Public:</strong>
-  <%= @video.public %>
-</p>
+  <div class="card" >
+    <div class="card-header" >
+      <h4 class="card-title">
+        <%= @video.name %>
+      </h4>
+    </div>
+      <p class="card-text">
+        <div class="embed-responsive embed-responsive-16by9">
+          <iframe class="embed-responsive-item"  width="560" height="315" src=<%= @video.url %> allowfullscreen></iframe>
+        </div>
+        <p><%== @video.description %></p>
+      </p>
+      <p>
+          <% if current_user.try(:admin?) %>
+            <% if @video.public %>
+              <%= link_to 'Edit', edit_video_path(@video), :class => "btn btn-info", :role => "button"  %>
+            <% end %> 
+            <% if ! @video.public %>
+              <%= link_to 'Edit', edit_video_path(@video), :class => "btn btn-primary", :role => "button"  %>
+            <% end %> 
+             <%= link_to 'Destroy', @video, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger", :role => "button"  %>
+          <% end %>
+          <% if @video.tag_list.to_s != '' %>
+            <p>Tags: <%= raw(@video.tag_list.map { |t| link_to t, list_videos_tags_path(t) }.join(', ')) %></p>
+          <% end %> 
+      </p>
+
+      <div class="card-footer text-muted" >
+          published in <%= link_to @video.country.name , list_videos_path(@video.country) %>  on <%= @video.created_at.strftime("%A, the %-d %B %Y") %>, last update on <%= @video.updated_at.strftime("%A, the %-d %B %Y")  %>
+      </div>
+   </div>
+   </p>
 
 <p>
-  <strong>Name:</strong>
-  <%= @video.name %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @video.description %>
-</p>
-
-<p>
-  <strong>Url:</strong>
-  <%= @video.url %>
-</p>
-
-<div class="embed-responsive embed-responsive-16by9">
-  <iframe class="embed-responsive-item"  width="560" height="315" src=<%= @video.url %> allowfullscreen></iframe>
-</div>
-
-<p>
-<%= link_to 'Edit', edit_video_path(@video), :class => "btn btn-success", :role => "button" %>
 <%= link_to 'Back', videos_path, :class => "btn btn-secondary", :role => "button" %>
 </p>
+
+<%= render :partial => "shared/comments", :locals => { :commentable => @video } %>
 
 <%= render 'layouts/container_end' %>

@@ -1,6 +1,6 @@
 class VideosController < ApplicationController
   before_action :set_video, only: [:show, :edit, :update, :destroy]
-  before_filter :check_privileges!, except: [:index, :list_videos]
+  before_filter :check_privileges!, except: [:index, :list_videos, :show]
 
   # GET /videos
   # GET /videos.json
@@ -9,15 +9,17 @@ class VideosController < ApplicationController
     @countries = Country.all
     @path = 'country_videos_path' 
     @tags = Video.where(public: true).tag_counts_on(:tags)
-    render 'countries/list', path: @path 
+    render 'list_videos'
   end
 
   def list_videos
     if params[:tag]
       @videos = Video.tagged_with(params[:tag])
-    else
+    elsif params[:country]
       @country = Country.find(params[:country])
       @videos = Video.where(country_id: @country).all
+    else
+      @videos = Video.all
     end
   end
 
