@@ -5,7 +5,7 @@
 
 <p><h3><%= link_to 'News', news_index_path, :style => "color: black"  %></h3>
 <b><%= @latest_news.created_at.strftime("%A, the %-d %B %Y")  if @latest_news != nil %></b>
-<%== @latest_news.text if @latest_news != nil %>
+<div><%== @latest_news.text if @latest_news != nil %></div>
 
 </br><small><%= link_to 'show all news', news_index_path %></small></p>
 
