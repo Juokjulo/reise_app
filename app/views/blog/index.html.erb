@@ -10,6 +10,7 @@
 </p>
 <small><%= link_to 'show all news', news_index_path %></small>
 
+<h3>Blog</h3>
 <%  @blog.each do |blog| %>
 	<%= render 'blog/videos', video: blog if blog.class == Video %>
 	<%= render 'blog/stories', story: blog if blog.class == Story %>
