@@ -1,10 +1,5 @@
-<%= render 'layouts/container' %>
 <h1>New News</h1>
 
 <%= render 'form', news: @news %>
 
-<p>
-</br></br></br></br></br></br></br></br></br></br></br></br>
-<%= link_to 'Back', news_index_path, :class => "btn btn-secondary", :role => "button"  %></p>
-
-<%= render 'layouts/container_end' %>
+<%= link_to 'Back', news_index_path %>

@@ -13,25 +13,10 @@
 
   <div class="field">
     <%= f.label :text %>
-    <%= f.text_field :text %>
-  </div>
-
-  <div class="field">
-    <%= f.label :text_link %>
-    <%= f.text_field :text_link %>
-  </div>
-
-  <div class="field">
-    <%= f.label :link %>
-    <%= f.text_field :link %>
-  </div>
-
-  <div class="field">
-    <%= f.label :color %>
-    <%= f.text_field :color %>
+    <%= f.text_area :text %>
   </div>
 
   <div class="actions">
-    <p><%= f.submit %></p>
+    <%= f.submit %>
   </div>
 <% end %>

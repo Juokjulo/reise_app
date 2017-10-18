@@ -1,0 +1,18 @@
+<%= render 'layouts/container' %>
+<% if current_user.try(:admin?) %>
+	<p style="background-color: white"><%= link_to 'Users:', users_path %> <%= User.count %> registered</p>
+<% end %>
+
+<h3><%= link_to 'News', news_index_path, :style => "color: black"  %></h3>
+<b><%= @latest_news.created_at.strftime("%A, the %-d %B %Y")  if @latest_news != nil %></b>
+<p>
+<%== @latest_news.text if @latest_news != nil %>
+</p>
+<small><%= link_to 'show all news', news_index_path %></small>
+
+<%  @blog.each do |blog| %>
+	<%= render 'blog/videos', video: blog if blog.class == Video %>
+	<%= render 'blog/stories', story: blog if blog.class == Story %>
+<% end %>
+
+<%=  render 'layouts/container_end' %>

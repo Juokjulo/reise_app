@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  resources :routes
   resources :news
+  resources :routes
   get 'comments/index'
   get 'comments/new'
   resources :stories, :pictures, :countries, :videos, :travel_tipps, :materials, shallow: true do
@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   resources :stories
   resources :pictures
   resources :newsletters
-  root to: 'visitors#index'
+  root to: 'blog#index'
   get "pictures/new/:country" => "pictures#new", :as => "new_picture_country" 
   get "stories/new/:country" => "stories#new", :as => "new_story_country" 
   get "videos/new/:country" => "videos#new", :as => "new_video_country" 
@@ -37,10 +37,12 @@ Rails.application.routes.draw do
     resources :pictures
     resources :videos
     resources :travel_tipps
+    
   end
   get 'list_stories_tags/:tag', to: 'stories#list_stories', :as => "list_stories_tags"
   get 'list_videos_tags/:tag', to: 'videos#list_videos', :as => "list_videos_tags"
   get 'list_pictures_tags/:tag', to: 'pictures#list_pictures', :as => "list_pictures_tags"
+  get 'blog', to: 'blog#index', :as => "blog"
 
 
 end

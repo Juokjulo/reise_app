@@ -1,11 +1,11 @@
 class NewsController < ApplicationController
   before_action :set_news, only: [:show, :edit, :update, :destroy]
-  before_filter :check_privileges!
+    before_filter :check_privileges!, except: [:index]
 
   # GET /news
   # GET /news.json
   def index
-    @news = News.all
+    @news = News.all.reverse
   end
 
   # GET /news/1
@@ -70,6 +70,6 @@ class NewsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def news_params
-      params.require(:news).permit(:text, :text_link, :link, :color)
+      params.require(:news).permit(:text)
     end
 end
