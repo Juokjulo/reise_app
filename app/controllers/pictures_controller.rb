@@ -53,8 +53,11 @@ class PicturesController < ApplicationController
     params[:picture_images]['images'].each do |image|
       @picture = Picture.new(picture_params)
       @picture.image = image
-      @picture.name += " " + i.to_s
       
+      if params[:picture_images]['images'].count > 1
+        @picture.name += " " + i.to_s
+      end
+
       if @picture.save
         saved = true
       else
