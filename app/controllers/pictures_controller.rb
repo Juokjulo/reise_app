@@ -84,7 +84,9 @@ class PicturesController < ApplicationController
   # PATCH/PUT /pictures/1
   # PATCH/PUT /pictures/1.json
   def update
-    @picture.image = params[:picture_images]['images'].first 
+    if params[:picture_images] != nil
+      @picture.image = params[:picture_images]['images'].first 
+    end
     
     respond_to do |format|
 
@@ -120,10 +122,4 @@ class PicturesController < ApplicationController
     end
 end
 
-  def next
-    Item.where("id > ?", id).order("id ASC").first || Item.first
-  end
-
-  def prev
-    pictures.where("id < ?", id).last
-  end
+ 
