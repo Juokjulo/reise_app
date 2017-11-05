@@ -5,8 +5,15 @@
   <h1><%= @picture.name %></h1>
 </p>
 
+<p style="align-content: center;">
+<%= link_to 'Previous', @previous_picture, :class => "btn btn-secondary", :role => "button"   %>
+<%= link_to 'Next', @next_picture, :class => "btn btn-secondary", :role => "button"   %>
+</p>
+
 <p>
+<%= link_to @next_picture do %>	
   <%= image_tag(@picture.image_url) if @picture.image.present? %>
+<% end %>
 </p>
 
 <p>

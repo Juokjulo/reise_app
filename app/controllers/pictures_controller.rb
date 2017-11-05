@@ -27,6 +27,10 @@ class PicturesController < ApplicationController
   def show
     @commentable = @picture
     @comments = @commentable.comments
+    @pictures = Picture.where(country_id: @picture.country_id).all
+    @previous_picture = @pictures[@pictures.index(@picture) - 1]
+    @next_picture = @pictures[@pictures.index(@picture) + 1]
+
   end
 
   # GET /pictures/new
@@ -115,3 +119,11 @@ class PicturesController < ApplicationController
       params.require(:picture).permit(:name, :description, :image, :country_id, :public, :tag_list, :tag, { tag_ids: [] })
     end
 end
+
+  def next
+    Item.where("id > ?", id).order("id ASC").first || Item.first
+  end
+
+  def prev
+    pictures.where("id < ?", id).last
+  end
