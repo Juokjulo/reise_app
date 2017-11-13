@@ -56,20 +56,16 @@
 <% end %>
 
 
-
-
 <% if current_user.try(:admin?) %>
 	<p><%= link_to 'Edit', edit_travel_tipp_path(@travel_tipp), :class => "btn btn-info", :role => "button"  %> </p>
 <% end %>
 
 
 
-
-
-
-
 <p>
 <%= link_to 'Back', travel_tipps_path, :class => "btn btn-secondary", :role => "button"  %>
 </p>
+
+<%= render :partial => "shared/comments", :locals => { :commentable => @travel_tipp } %>
 
 <%= render 'layouts/navigation_travel_tipps_end' %>
