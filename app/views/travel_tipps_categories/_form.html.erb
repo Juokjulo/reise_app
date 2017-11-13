@@ -1,0 +1,22 @@
+<%= form_for(travel_tipps_category) do |f| %>
+  <% if travel_tipps_category.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(travel_tipps_category.errors.count, "error") %> prohibited this travel_tipps_category from being saved:</h2>
+
+      <ul>
+      <% travel_tipps_category.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

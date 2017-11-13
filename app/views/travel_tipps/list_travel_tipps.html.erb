@@ -1,32 +1,6 @@
 <% content_for :title do %>Travel Tipps<% end %>
-<%= render 'layouts/container' %>
+<%= render 'layouts/navigation_travel_tipps' %>
 
-<h1>Travel Tipps</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @travel_tipps.each do |travel_tipp| %>
-      <tr>
-        <td><%= travel_tipp.name %></td>
-        <td><%= travel_tipp.description %></td>
-        <td><%= travel_tipp.country.name %></td>
-        <td><%= link_to 'Show', travel_tipp, :class => "btn btn-success", :role => "button"  %></td>
-        <td><%= link_to 'Edit', edit_travel_tipp_path(travel_tipp), :class => "btn btn-info", :role => "button"  %></td>
-        <td><%= link_to 'Destroy', travel_tipp, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger", :role => "button"  %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
 
 <% if current_user.try(:admin?) %>
 
@@ -34,4 +8,53 @@
 
 <% end %>
 
-<%= render 'layouts/container_end' %>
+<br>
+
+<h1>Travel Tipps</h1>
+
+<% @travel_tipps.each do |travel_tipp| %>
+ <% if current_user.try(:admin?) or travel_tipp.public %>
+ <p>
+  <div class="card" >
+    <div class="card-header" >
+      <div class="container">
+            <div class="row">
+              <div class="col-sm-12 col-md-10 col-lg-10 col-lx-10">
+                <h4 class="card-title" >
+                  <%= link_to travel_tipp.name, travel_tipp, :style => "color: black" %>
+                </h4>
+              </div>
+              <div class="text-right col-sm-12 col-md-2 col-lg-2 col-lx-2"><small><%= travel_tipp.comments.count %><%= octicon "comment", :height => 18,  :class => "right", :"aria-label" => "comments" %></small></div>  
+            </div>
+          </div>
+    </div>
+      <p class="card-text">
+          <%== travel_tipp.description %>
+               
+      </p>
+      <p>
+          <%= link_to 'Read more', travel_tipp, :class => "btn btn-success", :role => "button"  %>
+          <% if current_user.try(:admin?) %>
+            <% if travel_tipp.public %>
+              <%= link_to 'Edit', edit_travel_tipp_path(travel_tipp), :class => "btn btn-info", :role => "button"  %>
+            <% end %> 
+            <% if ! travel_tipp.public %>
+              <%= link_to 'Edit', edit_travel_tipp_path(travel_tipp), :class => "btn btn-primary", :role => "button"  %>
+            <% end %> 
+            <%= link_to 'Destroy', travel_tipp, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger", :role => "button"  %>
+          <% end %>
+      </p>
+      <div class="card-footer text-muted" >
+        <small>
+           written in <%= link_to travel_tipp.country.name , list_travel_tipps_path(travel_tipp.country) %> in category <%= link_to travel_tipp.travel_tipps_category.name , list_travel_tipps_category_path(travel_tipp.travel_tipps_category) %>  on <%= travel_tipp.created_at.strftime("%A, the %-d %B %Y") %>, last update on <%= travel_tipp.updated_at.strftime("%A, the %-d %B %Y")  %>
+      </small>
+      </div>
+   </div>
+  </p>
+  <% end %>
+<% end %>
+
+
+
+
+<%= render 'layouts/navigation_travel_tipps_end' %>

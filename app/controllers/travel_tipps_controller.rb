@@ -7,18 +7,36 @@ class TravelTippsController < ApplicationController
   def index
     @travel_tipps = TravelTipp.all
     @countries = Country.all
-    #@path = 'country_travel_tipps_path' 
-    #render 'countries/list', path: @path 
+    @travel_tipps_categories = TravelTippsCategory.all
+    @countries_all = Country.joins(:travel_tipps).group('countries.id')
+    @travel_tipps_categories_all = TravelTippsCategory.joins(:travel_tipps).group('travel_tipps_categories.id')
+    render 'list_travel_tipps' if ! current_user.try(:admin?)
   end
 
   def list_travel_tipps
-    @country = Country.find(params[:country])
-    @travel_tipps = TravelTipp.where(country_id: @country).all
+    @countries = Country.all
+     @travel_tipps_categories = TravelTippsCategory.all
+    if params[:country]
+      @country = Country.find(params[:country])
+      @travel_tipps = TravelTipp.where(country_id: @country).all
+    elsif params[:travel_tipps_category]
+     @travel_tipps_category = TravelTippsCategory.find(params[:travel_tipps_category])
+     @travel_tipps = TravelTipp.where(travel_tipps_category_id: @travel_tipps_category).all
+    else
+      @travel_tipps = TravelTipp.all
+    end
+    @countries_all = Country.joins(:travel_tipps).group('countries.id')
+    @travel_tipps_categories_all = TravelTippsCategory.joins(:travel_tipps).group('travel_tipps_categories.id')
+
   end
 
   # GET /travel_tipps/1
   # GET /travel_tipps/1.json
   def show
+    @countries = Country.all
+    @travel_tipps_categories = TravelTippsCategory.all
+    @countries_all = Country.joins(:travel_tipps).group('countries.id')
+    @travel_tipps_categories_all = TravelTippsCategory.joins(:travel_tipps).group('travel_tipps_categories.id')
   end
 
   # GET /travel_tipps/new
@@ -78,6 +96,6 @@ class TravelTippsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def travel_tipp_params
-      params.require(:travel_tipp).permit(:name, :description, :country_id, :public)
+      params.require(:travel_tipp).permit(:name, :description, :country_id, :public, :travel_tipps_category_id, travel_tipps_segments_attributes: [ :titleLeft, :contentLeft, :borderLeft, :colorLeft, :titleRight, :contentRight, :borderRight, :colorRight, :fullsize, :picture_id, :id, :_destroy ])
     end
 end

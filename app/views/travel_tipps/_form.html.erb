@@ -28,8 +28,22 @@
 
   <div class="form-group">
     <%= f.label :country %><br />
-    <%= f.select( :country_id, Country.all.collect {|c| [ c.name, c.id] }, { include_blank: false } ) %>
+    <%= f.select( :country_id, Country.all.collect {|c| [ c.name, c.id] }, { include_blank: true } ) %>
   </div>
+
+   <div class="form-group">
+    <%= f.label :travel_tipps_category %><br />
+    <%= f.select( :travel_tipps_category_id, TravelTippsCategory.all.collect {|c| [ c.name, c.id] }, { include_blank: true } ) %>
+  </div>
+
+    <%= f.fields_for :travel_tipps_segments do |builder| %>
+      <%= render 'travel_tipps_segment_fields', :f => builder%>
+    <% end %>
+    <div class="links">
+        <%= link_to_add_association 'add segment', f, :travel_tipps_segments, :class => "btn btn-success", :role => "button"  %>
+    </div>
+
+
 
   <div class="actions">
     <%= f.submit %>

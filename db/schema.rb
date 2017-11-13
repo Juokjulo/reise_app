@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171018122813) do
+ActiveRecord::Schema.define(version: 20171113093006) do
 
   create_table "comments", force: :cascade do |t|
     t.string   "title"
@@ -152,10 +152,36 @@ ActiveRecord::Schema.define(version: 20171018122813) do
     t.string   "name"
     t.text     "description"
     t.integer  "country_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
     t.boolean  "public"
+    t.integer  "travel_tipps_category_id"
     t.index ["country_id"], name: "index_travel_tipps_on_country_id"
+    t.index ["travel_tipps_category_id"], name: "index_travel_tipps_on_travel_tipps_category_id"
+  end
+
+  create_table "travel_tipps_categories", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "travel_tipps_segments", force: :cascade do |t|
+    t.string   "titleLeft"
+    t.text     "contentLeft"
+    t.boolean  "borderLeft",     default: false
+    t.string   "colorLeft"
+    t.string   "titleRight"
+    t.text     "contentRight"
+    t.boolean  "borderRight",    default: false
+    t.string   "colorRight"
+    t.boolean  "fullsize",       default: false
+    t.integer  "travel_tipp_id"
+    t.integer  "picture_id"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.index ["picture_id"], name: "index_travel_tipps_segments_on_picture_id"
+    t.index ["travel_tipp_id"], name: "index_travel_tipps_segments_on_travel_tipp_id"
   end
 
   create_table "users", force: :cascade do |t|

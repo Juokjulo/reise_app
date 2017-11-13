@@ -6,5 +6,6 @@ class Picture < ApplicationRecord
 	has_one :material
 	belongs_to :country
 	has_many :stories
+	has_many :travel_tipps_segments
 	has_many :comments, as: :commentable
 end

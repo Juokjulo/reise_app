@@ -1,0 +1,59 @@
+ <div class="travel_tipps_segment-fields">
+
+      <h3>Segment</h3>
+
+  <div class="form-group">
+    <%= f.label :fullsize %>
+    <%= f.check_box :fullsize %>
+  </div>   
+  <div class="field">
+    <%= f.label :titleLeft %>
+    <%= f.text_field :titleLeft %>
+  </div>
+
+  <div class="field">
+    <%= f.label :contentLeft %>
+    <%= f.text_area :contentLeft %>
+  </div>
+
+  <div class="field">
+    <%= f.label :borderLeft %>
+    <%= f.check_box :borderLeft %>
+  </div>
+
+  <div class="field">
+    <%= f.label :colorLeft %>
+    <%= f.text_field :colorLeft %>
+  </div>
+
+  <div class="field">
+    <%= f.label :titleRight %>
+    <%= f.text_field :titleRight %>
+  </div>
+
+  <div class="field">
+    <%= f.label :contentRight %>
+    <%= f.text_area :contentRight %>
+  </div>
+
+  <div class="field">
+    <%= f.label :borderRight %>
+    <%= f.check_box :borderRight %>
+  </div>
+
+  <div class="field">
+    <%= f.label :colorRight %>
+    <%= f.text_field :colorRight %>
+  </div>
+  <div class="form-group">
+    <%= f.label :picture %><br />
+    <%= f.select( :picture_id, Picture.all.collect {|p| [ p.name, p.id] }, { include_blank: true }, :class => "travel_tipps_segment_picture_id" ) %>
+  </div>
+
+
+
+     <div  align="center">
+    <%= f.hidden_field :_destroy %>
+    <%= link_to_remove_association "remove segment", f, {wrapper_class: 'travel_tipps_segment-fields', :class => "btn btn-danger", :role => "button"} %>
+    </div>
+</div>

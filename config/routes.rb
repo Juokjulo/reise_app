@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :travel_tipps_categories
+  resources :travel_tipps, shallow: true do
+    resources :travel_tipps_segments
+  end
   resources :news
   resources :routes
   get 'comments/index'
@@ -24,6 +28,7 @@ Rails.application.routes.draw do
   get "list_pictures/:country" => "pictures#list_pictures", :as => "list_pictures"
   get "list_videos/:country" => "videos#list_videos", :as => "list_videos"
   get "list_travel_tipps/:country" => "travel_tipps#list_travel_tipps", :as => "list_travel_tipps"
+  get "list_travel_tipps_category/:travel_tipps_category" => "travel_tipps#list_travel_tipps", :as => "list_travel_tipps_category"
   devise_for :users
   resources :users
   get "reset_password/:userid" => "users#reset_password", :as => "reset_password"

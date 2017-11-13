@@ -1,0 +1,19 @@
+<div class="container">
+
+	<div class="row">
+
+		<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+				<div class="card card_travel_tipp" >
+					<ul class="nav navbar-nav">
+				<% @countries_all.each do |country| %>
+					<li class='nav-item'><%= link_to  country.name , list_travel_tipps_path(country), class: 'nav-link', style: 'color:grey'  %>	</li>		
+				<% end %>	
+				
+			</ul>
+				</div>	
+
+		</div>
+
+		<div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">	
+		 <div class="card card_travel_tipp">	
+

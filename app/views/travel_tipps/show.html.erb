@@ -1,21 +1,75 @@
 <% content_for :title do %>Travel Tipps<% end %>
-<%= render 'layouts/container' %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @travel_tipp.name %>
-</p>
+<%= render 'layouts/navigation_travel_tipps' %>
 
-<p>
-  <strong>Description:</strong>
-  <%= @travel_tipp.description %>
-</p>
-<% if current_user.try(:admin?) %>
-	<%= link_to 'Edit', edit_travel_tipp_path(@travel_tipp), :class => "btn btn-info", :role => "button"  %> 
+<% if current_user.try(:admin?) or @travel_tipp.public %>
+	<p>
+	  <h1><%= @travel_tipp.name %></h1>
+	</p>
+
+	<p class="text-muted" >
+		<small>
+          written in <%= link_to @travel_tipp.country.name , list_travel_tipps_path(@travel_tipp.country) %> in category <%= link_to @travel_tipp.travel_tipps_category.name , list_travel_tipps_category_path(@travel_tipp.travel_tipps_category) %>  on <%= @travel_tipp.created_at.strftime("%A, the %-d %B %Y") %>, last update on <%= @travel_tipp.updated_at.strftime("%A, the %-d %B %Y")  %>
+      </small>
+	</p>
+
+<div class="row">
+  <div class="col-8 col-md-8">
+
+	<% for travel_tipps_segment in @travel_tipp.travel_tipps_segments %>
+		<% break if travel_tipps_segment.fullsize %>
+		<div <%== 'class ="border"' if travel_tipps_segment.borderLeft == true %> >
+		 <h3><%=travel_tipps_segment.titleLeft%></h3>
+ 		 <p><%= image_tag(travel_tipps_segment.picture.image_url, :width => "100%") if travel_tipps_segment.picture.present? %></p>
+		 <p><%==travel_tipps_segment.contentLeft%></p>
+		 </br>
+		 </div>
+	 
+	<% end %>
+	</div>
+	<div class="col-4 col-md-4">
+	<% for travel_tipps_segment in @travel_tipp.travel_tipps_segments %>
+		<% next if travel_tipps_segment.titleRight == "" and travel_tipps_segment.contentRight == "" and travel_tipps_segment.borderRight == false  %>
+		<div <%== 'class ="border"' if travel_tipps_segment.borderRight == true %> >
+		 <h3><%=travel_tipps_segment.titleRight%></h3>
+		 <p><%==travel_tipps_segment.contentRight%></p>
+	 </br>
+	 </div>
+	 
+	<% end %>
+	</div>
+</div>
+
+<% fullsize=false %>
+<% for travel_tipps_segment in @travel_tipp.travel_tipps_segments %>
+		<% next if ! travel_tipps_segment.fullsize and ! fullsize%>
+		<% fullsize = true if travel_tipps_segment.fullsize %>
+		<div <%== 'class ="border"' if travel_tipps_segment.borderLeft == true %> >
+		 <p><%= image_tag(travel_tipps_segment.picture.image_url, :width => "100%") if travel_tipps_segment.picture.present? %></p>
+		 <h3><%=travel_tipps_segment.titleLeft%></h3>
+		 <p><%==travel_tipps_segment.contentLeft%></p>
+		 </br>
+		 </div>
+	 
+	<% end %>
+
 <% end %>
+
+
+
+
+<% if current_user.try(:admin?) %>
+	<p><%= link_to 'Edit', edit_travel_tipp_path(@travel_tipp), :class => "btn btn-info", :role => "button"  %> </p>
+<% end %>
+
+
+
+
+
+
 
 <p>
 <%= link_to 'Back', travel_tipps_path, :class => "btn btn-secondary", :role => "button"  %>
 </p>
 
-<%= render 'layouts/container_end' %>
+<%= render 'layouts/navigation_travel_tipps_end' %>

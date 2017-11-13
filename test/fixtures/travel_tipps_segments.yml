@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  public: false
+  titleLeft: MyString
+  contentLeft: MyText
+  borderLeft: false
+  colorLeft: MyString
+  titleRight: MyString
+  contentRight: MyText
+  borderRight: false
+  colorRight: MyString
+
+two:
+  public: false
+  titleLeft: MyString
+  contentLeft: MyText
+  borderLeft: false
+  colorLeft: MyString
+  titleRight: MyString
+  contentRight: MyText
+  borderRight: false
+  colorRight: MyString

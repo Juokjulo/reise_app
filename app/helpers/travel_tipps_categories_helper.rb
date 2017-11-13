@@ -1,0 +1,2 @@
+module TravelTippsCategoriesHelper
+end
