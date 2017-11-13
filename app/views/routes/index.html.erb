@@ -1,6 +1,10 @@
 <%= render 'layouts/container' %>
 <h1>Routes</h1>
 
+<% if current_user.try(:admin?) %>
+  <p><%= link_to 'New Route', new_route_path, :class => "btn btn-primary", :role => "button"  %></p>
+<% end %>
+
     <% @routes.each do |route| %>
       <p>
       <div class="card" >
@@ -25,8 +29,6 @@
     <% end %>
 
 <br>
-<% if current_user.try(:admin?) %>
-<p><%= link_to 'New Route', new_route_path, :class => "btn btn-primary", :role => "button"  %></p>
-<% end %>
+
 
 <%= render 'layouts/container_end' %>

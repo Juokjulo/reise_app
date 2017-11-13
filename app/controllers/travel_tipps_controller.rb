@@ -10,7 +10,7 @@ class TravelTippsController < ApplicationController
     @travel_tipps_categories = TravelTippsCategory.all
     @countries_all = Country.joins(:travel_tipps).group('countries.id')
     @travel_tipps_categories_all = TravelTippsCategory.joins(:travel_tipps).group('travel_tipps_categories.id')
-    render 'list_travel_tipps' if ! current_user.try(:admin?)
+    render 'list_travel_tipps' 
   end
 
   def list_travel_tipps

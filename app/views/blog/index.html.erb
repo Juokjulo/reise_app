@@ -9,6 +9,10 @@
 
 </br><small><%= link_to 'show all news', news_index_path %></small></p>
 
+<% if current_user.try(:admin?) %>
+	<p><%= link_to 'New News', new_news_path, :class => "btn btn-primary", :role => "button"  %></p>
+<% end %>
+
  	</div>
   </div>
 </div>
@@ -16,6 +20,13 @@
 
 <%=  render 'layouts/container' %>
 <p><h3>Blog</h3></p>
+<% if current_user.try(:admin?) %>
+  <p><%= link_to 'New Picture', new_picture_path, :class => "btn btn-primary", :role => "button"  %>
+      <%= link_to 'New Story', new_story_path, :class => "btn btn-primary", :role => "button"  %>
+      <%= link_to 'New Video', new_video_path, :class => "btn btn-primary", :role => "button"  %>
+      <%= link_to 'New Travel Tipp', new_travel_tipp_path, :class => "btn btn-primary", :role => "button"  %>
+      <%= link_to 'New Country', new_country_path, :class => "btn btn-primary", :role => "button"  %></p>
+<% end %>
 <%  @blog.each do |blog| %>
 	<%= render 'blog/videos', video: blog if blog.class == Video %>
 	<%= render 'blog/stories', story: blog if blog.class == Story %>
