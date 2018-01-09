@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<%= render 'layouts/container' %>
 
 <h1>Travel Tipps Categories</h1>
 
@@ -14,9 +14,9 @@
     <% @travel_tipps_categories.each do |travel_tipps_category| %>
       <tr>
         <td><%= travel_tipps_category.name %></td>
-        <td><%= link_to 'Show', travel_tipps_category %></td>
-        <td><%= link_to 'Edit', edit_travel_tipps_category_path(travel_tipps_category) %></td>
-        <td><%= link_to 'Destroy', travel_tipps_category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', travel_tipps_category, :class => "btn btn-success", :role => "button"  %></td>
+        <td><%= link_to 'Edit', edit_travel_tipps_category_path(travel_tipps_category), :class => "btn btn-primary", :role => "button"  %></td>
+        <td><%= link_to 'Destroy', travel_tipps_category, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger", :role => "button" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +24,8 @@
 
 <br>
 
-<%= link_to 'New Travel Tipps Category', new_travel_tipps_category_path %>
+<p>
+<%= link_to 'New Travel Tipps Category', new_travel_tipps_category_path, :class => "btn btn-primary", :role => "button"  %>
+</p>
+
+<%= render 'layouts/container_end' %>

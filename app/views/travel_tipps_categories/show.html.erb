@@ -1,9 +1,13 @@
-<p id="notice"><%= notice %></p>
+<%= render 'layouts/container' %>
 
 <p>
   <strong>Name:</strong>
   <%= @travel_tipps_category.name %>
 </p>
 
-<%= link_to 'Edit', edit_travel_tipps_category_path(@travel_tipps_category) %> |
-<%= link_to 'Back', travel_tipps_categories_path %>
+<p>
+<%= link_to 'Edit', edit_travel_tipps_category_path(@travel_tipps_category), :class => "btn btn-primary", :role => "button"  %> 
+<%= link_to 'Back', travel_tipps_categories_path, :class => "btn btn-secondary", :role => "button"  %>
+</p>
+
+<%= render 'layouts/container_end' %>

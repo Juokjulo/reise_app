@@ -1,6 +1,9 @@
-<%= render 'layouts/container' %>
+
 <div class="authform">
   <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :role => 'form'}) do |f| %>
+    <div class="alert alert-danger" role="alert">
+      You have to use the <strong>Firefox browser</strong> to Sign in! <a href="https://www.mozilla.org/en-US/firefox/" class="alert-link" target="_blank">Download it here!</a>
+    </div>
     <h3>Sign in</h3>
     <%= devise_error_messages! %>
     <div class="form-group">
@@ -27,4 +30,3 @@
       <% end -%>
   <% end %>
 </div>
-<%= render 'layouts/container_end' %>

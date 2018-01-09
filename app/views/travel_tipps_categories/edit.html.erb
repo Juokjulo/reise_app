@@ -1,6 +1,11 @@
+<%= render 'layouts/container' %>
 <h1>Editing Travel Tipps Category</h1>
 
 <%= render 'form', travel_tipps_category: @travel_tipps_category %>
 
-<%= link_to 'Show', @travel_tipps_category %> |
-<%= link_to 'Back', travel_tipps_categories_path %>
+<p>
+<%= link_to 'Show', @travel_tipps_category, :class => "btn btn-success", :role => "button" %> 
+<%= link_to 'Back', travel_tipps_categories_path, :class => "btn btn-secondary", :role => "button"  %>
+</p>
+
+<%= render 'layouts/container_end' %>

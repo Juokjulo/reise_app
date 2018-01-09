@@ -13,9 +13,12 @@
 	<p><%= link_to 'New News', new_news_path, :class => "btn btn-primary", :role => "button"  %></p>
 <% end %>
 
- 	</div>
-  </div>
-</div>
+<%=  render 'layouts/container_end2' %>
+</br></br>
+
+<%=  render 'layouts/container' %>
+<%= render 'blog/pictures'%>
+<%=  render 'layouts/container_end2' %>
 </br></br>
 
 <%=  render 'layouts/container' %>
@@ -27,6 +30,8 @@
       <%= link_to 'New Travel Tipp', new_travel_tipp_path, :class => "btn btn-primary", :role => "button"  %>
       <%= link_to 'New Country', new_country_path, :class => "btn btn-primary", :role => "button"  %></p>
 <% end %>
+
+
 <%  @blog.each do |blog| %>
 	<%= render 'blog/videos', video: blog if blog.class == Video %>
 	<%= render 'blog/stories', story: blog if blog.class == Story %>

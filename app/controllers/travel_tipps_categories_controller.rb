@@ -1,5 +1,6 @@
 class TravelTippsCategoriesController < ApplicationController
   before_action :set_travel_tipps_category, only: [:show, :edit, :update, :destroy]
+  before_filter :check_privileges!
 
   # GET /travel_tipps_categories
   # GET /travel_tipps_categories.json

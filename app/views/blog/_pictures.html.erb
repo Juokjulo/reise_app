@@ -1,0 +1,20 @@
+<p><h3><%= link_to 'Latest photo uploads ', list_pictures_path(@last_public_picture.country), :style => "color: black"  %></h3></p>
+<div class="card-columns">
+
+		<% @pictures.each do |picture| %> 
+
+
+				<div class="card">
+
+
+				        <% if picture.image_url.present? %>   
+				            <%= link_to list_pictures_path(picture.country)  do %>
+				                  <%= image_tag(picture.image_url, :class =>"card-img-top", :height => "200px" ) if picture.image.present? %>
+				            <% end %>
+				        <% end %>
+				             
+				                
+		   	</div>
+		<% end %>
+
+</div>
