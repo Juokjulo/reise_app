@@ -1,7 +1,7 @@
 class PicturesController < ApplicationController
   before_action :set_picture, only: [:show, :edit, :update, :destroy]
   before_action :list_pictures_helper, only: [:list_pictures, :list_pictures_text]
-  before_filter :check_privileges!, except: [:index, :show, :list_pictures]
+  before_filter :check_privileges!, except: [:index, :show, :list_pictures, :list_pictures_text]
 
   # GET /pictures
   # GET /pictures.json
