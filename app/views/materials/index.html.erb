@@ -1,11 +1,16 @@
 <% content_for :title do %>Gear<% end %>
 <%= render 'layouts/container' %>
 
-<h1>Gear</h1>
 
-
-
+<% for i in 0..1 %>
+  <% if 0 == i %>
+   <h2> Hiking gear</h2>
+  <% end %>
+   <% if 1 == i %>
+   <p><h2>Tandem gear</h2></p>
+  <% end %>
 <% @material_categories.each do |material_category| %>
+    <% if MaterialCategory.gear_types[material_category.gear_type]== i %>
     <div class="card" >
     <div class="card-header" >
       <h4 class="card-title">
@@ -68,6 +73,9 @@
   </div>
   </div>
   </div>
+  <% end %>
+<% end %>
+
 <% end %>
 
 <p class="text-muted" >

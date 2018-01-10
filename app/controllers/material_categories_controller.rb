@@ -70,6 +70,6 @@ class MaterialCategoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def material_category_params
-      params.require(:material_category).permit(:name)
+      params.require(:material_category).permit(:name, :gear_type)
     end
 end
