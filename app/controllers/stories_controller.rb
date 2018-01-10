@@ -15,9 +15,14 @@ class StoriesController < ApplicationController
   def list_stories
     if params[:tag]
       @stories = Story.order('stories.created_at ASC').tagged_with(params[:tag])
-    else
+      @tag = params[:tag]
+    elsif params[:country] 
       @country = Country.find(params[:country])
       @stories = Story.order('stories.created_at ASC').where(country_id: @country).all
+    elsif params[:date]
+      @date = Date.parse(params[:date])
+      @date = @date.strftime("%Y-%m-%d")
+      @stories = Story.where(["created_at like ?  ", @date + "%"] ).all
     end
   end
  

@@ -35,7 +35,8 @@
 		<%= link_to 'Edit', edit_picture_path(@picture), :class => "btn btn-primary", :role => "button"  %> 
 	<% end %>
 <% end %>
-<%= link_to 'Back', list_pictures_path(@picture.country), :class => "btn btn-secondary", :role => "button"   %>
+<%= link_to 'Back to Photos without text', list_pictures_path(@picture.country), :class => "btn btn-secondary", :role => "button"   %></br>
+<%= link_to 'Back to Photos with title and descriptions', list_pictures_text_path(@picture.country), :class => "btn btn-secondary", :role => "button"   %>
 </p>
 
 <%= render :partial => "shared/comments", :locals => { :commentable => @picture } %>

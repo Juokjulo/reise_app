@@ -1,0 +1,22 @@
+      <div class="card-block">
+                      <div class="text-right"><small><%= picture.comments.count %><%= octicon "comment", :height => 18,  :class => "right", :"aria-label" => "comments" %></small></div> 
+                      <h4 class="card-title"><%= picture.name %></h4>
+                      <p class="card-text"><%== picture.description %></p>
+                      <%= link_to 'Show', picture, :class => "btn btn-success", :role => "button"  %>
+              <% if current_user.try(:admin?) %>
+                <% if picture.public %>
+                  <%= link_to 'Edit', edit_picture_path(picture), :class => "btn btn-info", :role => "button"  %>
+                <% end %>
+                <% if !picture.public %>
+                  <%= link_to 'Edit', edit_picture_path(picture), :class => "btn btn-primary", :role => "button"  %>
+                <% end %>
+                <%= link_to 'Destroy', picture, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger", :role => "button"  %>
+            <% end %>
+                  <% if picture.tag_list.to_s != '' %>
+                    <p>Tags: <%= raw(picture.tag_list.map { |t| link_to t, list_pictures_tags_path(t) }.join(', ')) %></p>
+                  <% end %>
+        </div>
+        <div class="card-footer">
+                <small class="text-muted">Posted in <%= link_to picture.country.name , list_pictures_path(picture.country) %>  on <%= link_to picture.created_at.strftime("%-d.%-m.%Y") , list_pictures_date_path(picture.created_at) %>, last update on <%= picture.updated_at.strftime("%-d.%-m.%Y")  %></small>
+                    
+        </div>

@@ -15,9 +15,14 @@ class VideosController < ApplicationController
   def list_videos
     if params[:tag]
       @videos = Video.tagged_with(params[:tag])
+      @tag = params[:tag]
     elsif params[:country]
       @country = Country.find(params[:country])
       @videos = Video.where(country_id: @country).all
+    elsif params[:date]
+      @date = Date.parse(params[:date])
+      @date = @date.strftime("%Y-%m-%d")
+      @videos = Video.where(["created_at like ?  ", @date + "%"] ).all
     else
       @videos = Video.all
     end

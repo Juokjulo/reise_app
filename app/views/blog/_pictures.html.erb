@@ -1,4 +1,4 @@
-<p><h3><%= link_to 'Latest photo uploads ', list_pictures_path(@last_public_picture.country), :style => "color: black"  %></h3></p>
+<p><h3><%= link_to 'Latest photo uploads ', list_pictures_date_path(@last_created_at), :style => "color: black"  %></h3></p>
 
 <% if @countries != nil %>  
 	<p><small> New photos in 
@@ -17,7 +17,7 @@
 
 
 				        <% if picture.image_url.present? %>   
-				            <%= link_to list_pictures_path(picture.country)  do %>
+				            <%= link_to list_pictures_date_path(@last_created_at)  do %>
 				                  <%= image_tag(picture.image_url, :class =>"card-img-top", :height => "200px" ) if picture.image.present? %>
 				            <% end %>
 				        <% end %>
@@ -27,4 +27,5 @@
 		<% end %>
 
 </div>
+
 

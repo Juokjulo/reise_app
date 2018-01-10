@@ -2,7 +2,7 @@
 <%= render 'layouts/container' %>
 
 
-<h1>Videos <%= ' in ' + @country.name if @country != nil %> <%= octicon "device-camera-video", :height => 35,  :class => "right", :"aria-label" => "device-camera-video" %></h1>
+<h1>Videos <%= ' in ' + @country.name if @country != nil %> <%= ' with tag ' + @tag if @tag != nil %> <%= ' created on ' + Date.parse(@date).strftime("%-d.%-m.%Y")  if @date != nil %><%= octicon "device-camera-video", :height => 35,  :class => "right", :"aria-label" => "device-camera-video" %></h1>
 <% if @country != nil %>
   <p>
   <%= link_to 'Pictures', list_pictures_path(@country), :class => "btn btn-secondary", :role => "button"  %>
@@ -55,7 +55,7 @@
       </p>
 
       <div class="card-footer text-muted" >
-          published in <%= link_to video.country.name , list_videos_path(video.country) if video.country != nil%>  on <%= video.created_at.strftime("%A, the %-d %B %Y") %>, last update on <%= video.updated_at.strftime("%A, the %-d %B %Y")  %>
+          published in <%= link_to video.country.name , list_videos_path(video.country) if video.country != nil%>  on <%= link_to video.created_at.strftime("%A, the %-d %B %Y") , list_videos_date_path(video.created_at)%>, last update on <%= video.updated_at.strftime("%A, the %-d %B %Y")  %>
       </div>
    </div>
    </p>

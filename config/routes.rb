@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   get "videos/new/:country" => "videos#new", :as => "new_video_country" 
   get "list_stories/:country" => "stories#list_stories", :as => "list_stories"
   get "list_pictures/:country" => "pictures#list_pictures", :as => "list_pictures"
+  get "list_pictures_text/:country" => "pictures#list_pictures_text", :as => "list_pictures_text"
   get "list_videos/:country" => "videos#list_videos", :as => "list_videos"
   get "list_travel_tipps/:country" => "travel_tipps#list_travel_tipps", :as => "list_travel_tipps"
   get "list_travel_tipps_category/:travel_tipps_category" => "travel_tipps#list_travel_tipps", :as => "list_travel_tipps_category"
@@ -47,7 +48,11 @@ Rails.application.routes.draw do
   get 'list_stories_tags/:tag', to: 'stories#list_stories', :as => "list_stories_tags"
   get 'list_videos_tags/:tag', to: 'videos#list_videos', :as => "list_videos_tags"
   get 'list_pictures_tags/:tag', to: 'pictures#list_pictures', :as => "list_pictures_tags"
+  get 'list_pictures_text_tags/:tag', to: 'pictures#list_pictures_text', :as => "list_pictures_text_tags"
   get 'blog', to: 'blog#index', :as => "blog"
-
+  get 'list_stories_date/:date', to: 'stories#list_stories', :as => "list_stories_date"
+  get 'list_videos_date/:date', to: 'videos#list_videos', :as => "list_videos_date"
+  get 'list_pictures_date/:date', to: 'pictures#list_pictures', :as => "list_pictures_date"
+  get 'list_pictures_text_date/:date', to: 'pictures#list_pictures_text', :as => "list_pictures_text_date"
 
 end

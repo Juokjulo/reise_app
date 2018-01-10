@@ -1,5 +1,6 @@
 class PicturesController < ApplicationController
   before_action :set_picture, only: [:show, :edit, :update, :destroy]
+  before_action :list_pictures_helper, only: [:list_pictures, :list_pictures_text]
   before_filter :check_privileges!, except: [:index, :show, :list_pictures]
 
   # GET /pictures
@@ -13,13 +14,14 @@ class PicturesController < ApplicationController
   end
 
   def list_pictures
-    if params[:tag]
-      @pictures = Picture.tagged_with(params[:tag])
-    else
-      @country = Country.find(params[:country])
-      @pictures = Picture.where(country_id: @country).all
-    end
+    @list_pictures_text = false
+    render 'pictures/list_pictures', list_pictures_text: @list_pictures_text 
 
+  end
+
+  def list_pictures_text
+    @list_pictures_text = true
+    render 'pictures/list_pictures', list_pictures_text: @list_pictures_text 
   end
 
   # GET /pictures/1
@@ -120,6 +122,22 @@ class PicturesController < ApplicationController
     def picture_params
       params.require(:picture).permit(:name, :description, :image, :country_id, :public, :tag_list, :tag, { tag_ids: [] })
     end
+
+    def list_pictures_helper
+       if params[:tag]
+          @pictures = Picture.tagged_with(params[:tag])
+          @tag = params[:tag]
+        elsif params[:country]
+          @country = Country.find(params[:country])
+          @pictures = Picture.where(country_id: @country).all
+        elsif params[:date]
+          @date = Date.parse(params[:date])
+          @date = @date.strftime("%Y-%m-%d")
+          @pictures = Picture.where(["created_at like ? AND public = ? ", @date + "%", true] ).all
+        end
+        
+    end
+
 end
 
  

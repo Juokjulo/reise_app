@@ -33,7 +33,7 @@
       </p>
 
       <div class="card-footer text-muted" >
-          published in <%= link_to video.country.name , list_videos_path(video.country) if video.country != nil%>  on <%= video.created_at.strftime("%A, the %-d %B %Y") %>, last update on <%= video.updated_at.strftime("%A, the %-d %B %Y")  %>
+          published in <%= link_to video.country.name , list_videos_path(video.country) if video.country != nil%>  on <%= link_to video.created_at.strftime("%A, the %-d %B %Y") , list_videos_date_path(video.created_at)%>, last update on <%= video.updated_at.strftime("%A, the %-d %B %Y")  %>
       </div>
    </div>
    </p>

@@ -2,7 +2,7 @@
 <%= render 'layouts/container' %>
 
 
-<h1>Stories <%= ' in ' + @country.name if @country != nil %> <%= octicon "book", :height => 35,  :class => "right", :"aria-label" => "book" %></h1>
+<h1>Stories <%= ' in ' + @country.name if @country != nil %><%= ' with tag ' + @tag if @tag != nil %> <%= ' created on ' + Date.parse(@date).strftime("%-d.%-m.%Y")  if @date != nil %> <%= octicon "book", :height => 35,  :class => "right", :"aria-label" => "book" %></h1>
 
 <% if @country != nil %>
   <p>
@@ -67,7 +67,7 @@
           <% end %> 
       </p>
       <div class="card-footer text-muted" >
-          written by <%= story.user.name %>   in <%= link_to story.country.name , list_stories_path(story.country) %>  on <%= story.created_at.strftime("%A, the %-d %B %Y") %>, last update on <%= story.updated_at.strftime("%A, the %-d %B %Y")  %>
+          written by <%= story.user.name %>   in <%= link_to story.country.name , list_stories_path(story.country) %>  on <%= link_to story.created_at.strftime("%A, the %-d %B %Y") , list_stories_date_path(story.created_at) %>, last update on <%= story.updated_at.strftime("%A, the %-d %B %Y")  %>
       </div>
    </div>
   </p>

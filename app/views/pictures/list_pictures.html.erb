@@ -1,6 +1,6 @@
 <% content_for :title do %>Pictures<% end %>
 <%= render 'layouts/container' %>
-  <h1>Pictures<%= ' in ' + @country.name if @country != nil %> <%= octicon "device-camera", :height => 35,  :class => "right", :"aria-label" => "device-camera" %></h1>
+  <h1>Pictures<%= ' in ' + @country.name if @country != nil %> <%= ' with tag ' + @tag if @tag != nil %> <%= ' created on ' + Date.parse(@date).strftime("%-d.%-m.%Y")  if @date != nil %> <%= octicon "device-camera", :height => 35,  :class => "right", :"aria-label" => "device-camera" %></h1>
 
 <% if @country != nil %>
   <p>
@@ -13,6 +13,35 @@
   <% end %>
   </p>
 <% end %>
+
+<% if !@list_pictures_text %>  
+  <p>
+  <% if @country != nil %>
+    <%= link_to 'Show Photos with titles and descriptions', list_pictures_text_path(@country), :class => "btn btn-success", :role => "button"  %>
+  <% end %>  
+    <% if @tag != nil %>
+    <%= link_to 'Show Photos with titles and descriptions', list_pictures_text_tags_path(@tag), :class => "btn btn-success", :role => "button"  %>
+  <% end %>  
+  <% if @date != nil %>
+    <%= link_to 'Show Photos with titles and descriptions', list_pictures_text_date_path(@date), :class => "btn btn-success", :role => "button"  %>
+  <% end %>  
+  </p>
+<% end %> 
+
+<% if @list_pictures_text %>  
+  <p>
+  <% if @country != nil %>
+    <%= link_to 'Show Photos without titles and descriptions', list_pictures_path(@country), :class => "btn btn-success", :role => "button"  %>
+  <% end %>  
+    <% if @tag != nil %>
+    <%= link_to 'Show Photos without titles and descriptions', list_pictures_tags_path(@tag), :class => "btn btn-success", :role => "button"  %>
+  <% end %>  
+   <% if @date != nil %>
+    <%= link_to 'Show Photos without titles and descriptions', list_pictures_date_path(@date), :class => "btn btn-success", :role => "button"  %>
+  <% end %> 
+  </p>
+<% end %> 
+
 
 <div class="card-columns">
 
@@ -31,29 +60,9 @@
                   <%= image_tag(picture.image_url, :class =>"card-img-top", :height => "200px" ) if picture.image.present? %>
             <% end %>
         <% end %>
-                <div class="card-block">
-                      <div class="text-right"><small><%= picture.comments.count %><%= octicon "comment", :height => 18,  :class => "right", :"aria-label" => "comments" %></small></div> 
-                      <h4 class="card-title"><%= picture.name %></h4>
-                      <p class="card-text"><%== picture.description %></p>
-                      <%= link_to 'Show', picture, :class => "btn btn-success", :role => "button"  %>
-              <% if current_user.try(:admin?) %>
-                <% if picture.public %>
-                  <%= link_to 'Edit', edit_picture_path(picture), :class => "btn btn-info", :role => "button"  %>
-                <% end %>
-                <% if !picture.public %>
-                  <%= link_to 'Edit', edit_picture_path(picture), :class => "btn btn-primary", :role => "button"  %>
-                <% end %>
-                <%= link_to 'Destroy', picture, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger", :role => "button"  %>
-            <% end %>
-                  <% if picture.tag_list.to_s != '' %>
-                    <p>Tags: <%= raw(picture.tag_list.map { |t| link_to t, list_pictures_tags_path(t) }.join(', ')) %></p>
-                  <% end %>
-                 </div>
-                  <div class="card-footer">
-      <small class="text-muted">Posted in <%= link_to picture.country.name , list_pictures_path(picture.country) %>  on <%= picture.created_at.strftime("%-d.%-m.%Y") %>, last update on <%= picture.updated_at.strftime("%-d.%-m.%Y")  %></small>
-          
-               </div>
-            
+            <% if @list_pictures_text %>  
+              <%= render 'pictures/list_pictures_text', picture: picture %>
+             <% end %>  
           </div>
         
      <% end %>      
