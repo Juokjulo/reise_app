@@ -1,4 +1,4 @@
-<p><h3><%= link_to 'Latest photo uploads ', list_pictures_date_path(@last_created_at), :style => "color: black"  %></h3></p>
+<p><h3><%= link_to 'Latest photo uploads from' + Date.parse(@last_created_at).strftime("%-d.%-m.%Y") , list_pictures_date_path(@last_created_at), :style => "color: black"  %></h3></p>
 
 <% if @countries != nil %>  
 	<p><small> New photos in 
