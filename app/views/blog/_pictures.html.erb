@@ -1,4 +1,13 @@
 <p><h3><%= link_to 'Latest photo uploads ', list_pictures_path(@last_public_picture.country), :style => "color: black"  %></h3></p>
+
+<% if @countries != nil %>  
+	<p><small> New photos in 
+		<% @countries.each do |country| %> 
+			<%= link_to country.name, list_pictures_path(country)%>
+		<% end %>
+	</small>
+<% end %>
+
 <div class="card-columns">
 
 		<% @pictures.each do |picture| %> 
@@ -18,3 +27,4 @@
 		<% end %>
 
 </div>
+

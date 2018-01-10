@@ -10,7 +10,15 @@ before_filter :check_privileges!, except: [:index]
 		@last_created_at = @last_public_picture.created_at 
 		@last_created_at = @last_created_at.strftime("%Y-%m-%d")
 		@pictures = Picture.where(["created_at like ? AND public = ? ", @last_created_at + "%", true] ).all.order(id: :desc).limit(9)
-	
+		@all_pictures = Picture.where(["created_at like ? AND public = ? ", @last_created_at + "%", true] ).all
+		@countries = []
+		@all_pictures.each do |picture|
+			if @countries == [] 
+				@countries.push(picture.country)
+			elsif !@countries.include?(picture.country)
+				@countries.push(picture.country)
+			end
+		end
 	end
 
 
