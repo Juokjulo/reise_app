@@ -1,13 +1,6 @@
 <%# add navigation links to this file %>
-<li class='nav-item'><%= link_to 'About us', page_path('about'), class: 'nav-link' %></li>
-<li class='nav-item'><%= link_to 'Route', routes_path, class: 'nav-link' %></li>
-<li class='nav-item'><%= link_to 'Stories', stories_path, class: 'nav-link' %></li>
-<li class='nav-item'><%= link_to 'Gear', materials_path, class: 'nav-link' %></li>
-<li class="nav-item"><%= link_to 'Photos', pictures_path, class: 'nav-link' %></li>
-<li class="nav-item"><%= link_to 'Videos', videos_path, class: 'nav-link' %></li>
-	
 
-<li class='nav-item'><%= link_to 'Travel Tipps', travel_tipps_path, class: 'nav-link' %></li>
+
 <% if user_signed_in? and current_user.admin? %>
 	<li class="nav-item">
 	<div class="dropdown">
@@ -26,3 +19,11 @@
 	</div>
 </li>
 <% end %>
+
+<li class='nav-item'><%= link_to 'About us', page_path('about'), class: 'nav-link' %></li>
+<li class='nav-item'><%= link_to 'Route', routes_path, class: 'nav-link' %></li>
+<li class='nav-item'><%= link_to 'Stories', stories_path, class: 'nav-link' %></li>
+<li class='nav-item'><%= link_to 'Gear', materials_path, class: 'nav-link' %></li>
+<li class="nav-item"><%= link_to 'Photos', pictures_path, class: 'nav-link' %></li>
+<li class="nav-item"><%= link_to 'Videos', videos_path, class: 'nav-link' %></li>
+<li class='nav-item'><%= link_to 'Travel Tipps', travel_tipps_path, class: 'nav-link' %></li>

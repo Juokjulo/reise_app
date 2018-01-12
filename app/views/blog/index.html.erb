@@ -9,8 +9,20 @@
 
 </br><small><%= link_to 'show all news', news_index_path %></small></p>
 
+
 <% if current_user.try(:admin?) %>
 	<p><%= link_to 'New News', new_news_path, :class => "btn btn-primary", :role => "button"  %></p>
+	<!-- hitwebcounter Code START -->
+	<p>Visits:
+	<a href="http://www.hitwebcounter.com" target="_blank">
+	<img src="http://hitwebcounter.com/counter/counter.php?page=6876827&style=0006&nbdigits=9&type=page&initCount=0" title="web page hit counters codes Free" Alt="web page hit counters codes Free"   border="0" >
+	</a>   </p>
+		<!-- hitwebcounter Code START -->
+	<p>Visitors:
+	<a href="http://www.hitwebcounter.com" target="_blank">
+	<img src="http://hitwebcounter.com/counter/counter.php?page=6876828&style=0006&nbdigits=9&type=ip&initCount=0" title="web page hit counters codes Free" Alt="web page hit counters codes Free"   border="0" >
+	</a>    </p>                                                            
+	                                       
 <% end %>
 
 <%=  render 'layouts/container_end2' %>
