@@ -1,5 +1,5 @@
 class NewslettersController < ApplicationController
-  before_action :set_newsletter, only: [:show, :edit, :update, :send_newsletter, :destroy]
+  before_action :set_newsletter, only: [:show, :edit, :update, :destroy]
   before_filter :check_privileges!
 
   # GET /newsletters
@@ -22,7 +22,9 @@ class NewslettersController < ApplicationController
   def edit
   end
 
-  def send
+
+  def send_new
+    @newsletter = Newsletter.find(params[:newsletter])
     if current_user.newsletter_abo?
         NewsletterMailer.newsletter_email(current_user, @newsletter).deliver_now
     end
