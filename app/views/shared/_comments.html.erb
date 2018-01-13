@@ -16,7 +16,6 @@
 	    <%= comment.content %></p>
       <% if user_signed_in? and current_user.id == comment.user_id or current_user.try(:admin?) %>
         <%= render 'shared/edit_comment', comment: comment%>
-        
       <% end %>
 	   <div class="card-footer text-muted" >
           <small>Added by <strong><% if current_user.try(:admin?) %><%= link_to User.find(comment.user_id).name, User.find(comment.user_id) %><% end %><% if ! current_user.try(:admin?) %><%= User.find(comment.user_id).name %><% end %></strong> on
