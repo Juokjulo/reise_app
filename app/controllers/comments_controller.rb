@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
   before_filter :check_privileges!, except: [:index]
 
   def index
-    @comments = Comment.all
+    @comments = Comment.all.reverse
   end
 
   def new
