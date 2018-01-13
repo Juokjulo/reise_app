@@ -1,5 +1,5 @@
 class NewslettersController < ApplicationController
-  before_action :set_newsletter, only: [:show, :edit, :update, :destroy]
+  before_action :set_newsletter, only: [:show, :edit, :update, :send_newsletter, :destroy]
   before_filter :check_privileges!
 
   # GET /newsletters
@@ -22,6 +22,13 @@ class NewslettersController < ApplicationController
   def edit
   end
 
+  def send
+    if current_user.newsletter_abo?
+        NewsletterMailer.newsletter_email(current_user, @newsletter).deliver_now
+    end
+
+  end
+
 
   # POST /newsletters
   # POST /newsletters.json
@@ -32,10 +39,6 @@ class NewslettersController < ApplicationController
       if @newsletter.save
         format.html { redirect_to @newsletter, notice: 'Newsletter was successfully created.' }
         format.json { render :show, status: :created, location: @newsletter }
-        if current_user.newsletter_abo?
-        NewsletterMailer.newsletter_email(current_user, @newsletter).deliver_now
-        NewsletterMailer.newsletter_email(User.find(17), @newsletter).deliver_now
-        end
       else
         format.html { render :new }
         format.json { render json: @newsletter.errors, status: :unprocessable_entity }
