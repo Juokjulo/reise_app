@@ -1,5 +1,5 @@
 class NewsletterMailer < ActionMailer::Base
-  default wecycleasia: 'we.are.cycling.asia@we-cycle.asia'
+  default from: 'we.are.cycling.asia@we-cycle.asia'
  
   
     def welcome_email(user, newsletter)
