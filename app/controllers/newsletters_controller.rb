@@ -29,11 +29,11 @@ class NewslettersController < ApplicationController
     @sent_to = ''
 
     @users.each do |user|
-        @sent_to = @sent_to + user.name.to_s + ', '
+        @sent_to = @sent_to + user.name.to_s + ':' + user.email.to_s +', '
     end
 
     if current_user.newsletter_abo?
-        NewsletterMailer.newsletter_email(current_user, @newsletter).deliver_now
+        NewsletterMailer.newsletter_email(current_user, @newsletter).deliver_later
     end
     redirect_to @newsletter, notice: 'Newsletter was sent to: ' + @sent_to
 
