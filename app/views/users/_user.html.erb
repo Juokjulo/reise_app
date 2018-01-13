@@ -1,4 +1,5 @@
 <%if current_user.try(:admin?)%>
+	<td><%= link_to user.id, user %></td>
 	<td><%= link_to user.name, user %></td>
 	<td><%= link_to user.email, user %></td>
 	<td>Newsletter: <%= "Ja" if user.newsletter_abo %><%= "Nein" if ! user.newsletter_abo %></td>

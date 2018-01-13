@@ -2,7 +2,7 @@ class NewsletterMailer < ActionMailer::Base
   default from: 'we.are.cycling.asia@gmail.com'
  
   
-    def welcome_email(user, newsletter)
+    def newsletter_email(user, newsletter)
       @user = user
       @newsletter = newsletter
       @url  = 'localhost:3000' 
