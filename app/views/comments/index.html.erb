@@ -7,11 +7,11 @@
    <div class="card" >
     <div class="card-header" >
       <h6 class="card-title">
-        <%= comment.title %>
+        <%= link_to comment.title, comment.commentable, :style => "color: black"  %>
       </h6>
     </div>
       <p class="card-text">
-      <%= comment.content %></p>
+      <%= link_to comment.content, comment.commentable, :style => "color: black"  %></p>
       <% if user_signed_in? and current_user.id == comment.user_id or current_user.try(:admin?) %>
         <%= render 'shared/edit_comment', comment: comment%>
       <% end %>
@@ -19,6 +19,7 @@
           <small>Added by <strong><% if current_user.try(:admin?) %><%= link_to User.find(comment.user_id).name, User.find(comment.user_id) %><% end %><% if ! current_user.try(:admin?) %><%= User.find(comment.user_id).name %><% end %></strong> on
       <%= l(comment.created_at, format: '%B, %d %Y %H:%M:%S') %>
       <% if current_user.try(:admin?) %><%= " " + comment.email %><% end %>
+      on <strong><%= link_to 'this ' + comment.commentable.class.to_s, comment.commentable %></strong>
       </small>
       </div>
   </div>
