@@ -14,11 +14,11 @@
     <div class="card" >
     <div class="card-header" >
       <h4 class="card-title">
-        <a data-toggle="collapse" data-parent="#accordion" href=<%= "#collapse" + material_category.name %>  >
+        <a data-toggle="collapse" data-parent="#accordion" href=<%= "#collapse" + material_category.id.to_s %>  >
         <%= material_category.name %></a>
       </h4>
     </div>
-    <div id=<%= "collapse" + material_category.name %> class="card-collapse collapse ">
+    <div id=<%= "collapse" + material_category.id.to_s  %> class="card-collapse collapse ">
       <div class="card-text">
   <div class="container">
   <table class="table table-striped ">

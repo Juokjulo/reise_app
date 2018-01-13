@@ -1,0 +1,35 @@
+ <p><a data-toggle="collapse" data-parent="#accordion" href=<%= "#collapse" + comment.id.to_s %>  class="btn btn-info"role="button" >
+        Edit</a></p>
+   
+    <div id=<%= "collapse" + comment.id.to_s  %> class="card-collapse collapse ">
+      
+
+<%= form_for(comment) do |f| %>
+         
+
+
+  <div class="form-group">
+    <%= f.label :title %>
+    <%= f.text_field :title, :class => "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :email %> (invisible)
+    <%= f.text_field :email, :class => "form-control", :placeholder => current_user.email %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :content %>
+    <%= f.text_area :content, :class => "form-control", rows: 5 %>
+  </div>
+
+
+  <%= f.submit %>
+  <div  align="right">
+  <p><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger", :role => "button"  %></p>
+  </div>
+
+</div>
+
+
+<% end %>

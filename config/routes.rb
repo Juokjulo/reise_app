@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get 'comments/index'
   get 'comments/new'
   resources :stories, :pictures, :countries, :videos, :travel_tipps, :materials, shallow: true do
-    resources :comments, :only => [:create, :destroy]
+    resources :comments, :only => [:create, :update, :destroy]
   end
   resources :tags
   resources :videos
