@@ -25,9 +25,17 @@ class NewslettersController < ApplicationController
 
   def send_new
     @newsletter = Newsletter.find(params[:newsletter])
+    @users = User.where(newsletter_abo: true).all
+    @sent_to = ''
+
+    @users.each do |user|
+        @sent_to = @sent_to + users.name.to_s + ', '
+    end
+
     if current_user.newsletter_abo?
         NewsletterMailer.newsletter_email(current_user, @newsletter).deliver_now
     end
+    redirect_to @newsletter, notice: 'Newsletter was sent to: ' + @sent_to
 
   end
 
