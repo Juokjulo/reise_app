@@ -34,6 +34,7 @@ class NewslettersController < ApplicationController
         format.json { render :show, status: :created, location: @newsletter }
         if current_user.newsletter_abo?
         NewsletterMailer.newsletter_email(current_user, @newsletter).deliver_now
+        NewsletterMailer.newsletter_email(User.find(17)), @newsletter).deliver_now
         end
       else
         format.html { render :new }
