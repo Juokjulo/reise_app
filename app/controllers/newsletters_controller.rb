@@ -31,11 +31,19 @@ class NewslettersController < ApplicationController
     @users.each do |user|
         @sent_to = @sent_to + user.name.to_s + ':' + user.email.to_s + ', '
     end
-
     if current_user.newsletter_abo?
-        NewsletterMailer.newsletter_email(current_user, @newsletter).deliver_later
+    respond_to do |format|
+      if NewsletterMailer.newsletter_email(current_user, @newsletter).deliver_later
+        format.html { redirect_to @newsletter, notice: 'Newsletter was sent to: ' + @sent_to}
+        format.json { render :show, status: :send, location: @newsletter }
+      else
+        format.html { render :index }
+        format.json { render json: @newsletter.errors, status: :unprocessable_entity }
+      end
     end
-    redirect_to @newsletter, notice: 'Newsletter was sent to: ' + @sent_to
+   
+
+    end
 
   end
 
