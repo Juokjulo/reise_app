@@ -24,7 +24,7 @@ class NewslettersController < ApplicationController
 
 
   def send_new
-    @newsletter = Newsletter.find(params[:id])
+    @newsletter = Newsletter.find(params[:newsletter])
     @users = User.where(newsletter_abo: true).all
     @sent_to = ''
 

@@ -33,9 +33,8 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users
   get "reset_password/:userid" => "users#reset_password", :as => "reset_password"
-  patch "update_password/:userid" => "users#update_password", :as => "update_password"#
-  
-  get :send_newsletter, to: "newsletters#send_new", :as => "send_newsletter"
+  patch "update_password/:userid" => "users#update_password", :as => "update_password"
+  get "newsletters/send/:newsletter" => "newsletters#send_new", :as => "send_newsletter"
 
   resources :stories, shallow: true do
   	resources :storytexts
