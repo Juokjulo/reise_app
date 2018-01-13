@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   end
   resources :news
   resources :routes
+  resources :comments
   get 'comments/index'
   get 'comments/new'
   resources :stories, :pictures, :countries, :videos, :travel_tipps, :materials, shallow: true do

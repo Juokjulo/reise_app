@@ -17,7 +17,7 @@
       <tr>
         <td><%= newsletter.title %></td>
         <td><%= newsletter.letter %></td>
-        <td><%= link_to 'Send', send_newsletter_path(newsletter), :class => "btn btn-success", :role => "button"  %></td>
+        <td><%= link_to 'Send', send_newsletter_path(newsletter), :class => "btn btn-primary", :role => "button"  %></td>
         <td><%= link_to 'Show', newsletter, :class => "btn btn-success", :role => "button"  %></td>
         <td><%= link_to 'Edit', edit_newsletter_path(newsletter), :class => "btn btn-info", :role => "button"  %></td>
         <td><%= link_to 'Destroy', newsletter, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger", :role => "button"  %></td>

@@ -1,0 +1,33 @@
+<%=  render 'layouts/container' %>
+<h2><%= link_to 'Comments', comments_path, :style => "color: black"  %></h2>
+<small><%= link_to 'show all comments', comments_path %></small>
+
+<% if !@latest_comments.empty? %>
+
+ <% for comment in @latest_comments %>
+  <p> 
+      <h5 >
+        <%= link_to comment.title, comment.commentable, :style => "color: black"  %>
+      </h5>
+    
+    <p>
+	    <%= link_to comment.content, comment.commentable, :style => "color: black"   %></p>
+      <% if user_signed_in? and current_user.id == comment.user_id or current_user.try(:admin?) %>
+        <%= render 'shared/edit_comment', comment: comment%>
+      <% end %>
+          <small>Added by <strong><% if current_user.try(:admin?) %><%= link_to User.find(comment.user_id).name, User.find(comment.user_id) %><% end %><% if ! current_user.try(:admin?) %><%= User.find(comment.user_id).name %><% end %></strong> on
+	    <%= l(comment.created_at, format: '%B, %d %Y %H:%M:%S') %>
+      <% if current_user.try(:admin?) %><%= " " + comment.email %><% end %>
+         on <strong><%= link_to 'this ' + comment.commentable.class.to_s, comment.commentable %></strong>
+      </small>
+    
+	</p>
+  <% end %>
+
+ <% else %>
+	<p><strong>Be the first one to add a comment somewhere!</strong> </p>
+<% end %>
+
+
+<%=  render 'layouts/container_end2' %>
+</br></br>

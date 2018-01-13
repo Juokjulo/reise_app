@@ -5,7 +5,8 @@ before_filter :check_privileges!, except: [:index]
 		@videos = Video.order('videos.updated_at ASC').all
 		@stories = Story.order('stories.updated_at ASC').all
 		@latest_news = News.last
-		@blog = (Video.all + Story.all).sort{|x,y| x.updated_at <=> y.updated_at}.reverse     
+		@blog = (Video.all + Story.all).sort{|x,y| x.updated_at <=> y.updated_at}.reverse 
+		@latest_comments = Comment.all.order(id: :desc).limit(3) 
 		@last_public_picture = Picture.where(public: true).last
 		@last_created_at = @last_public_picture.created_at 
 		@last_created_at = @last_created_at.strftime("%Y-%m-%d")

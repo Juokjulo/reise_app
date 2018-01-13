@@ -1,2 +1,33 @@
-<h1>Comments#index</h1>
-<p>Find me in app/views/comments/index.html.erb</p>
+<%=  render 'layouts/container' %>
+<h2>Comments</h2>
+<% if !@comments.empty? %>
+
+  <% for comment in @comments %>
+  <p>
+   <div class="card" >
+    <div class="card-header" >
+      <h6 class="card-title">
+        <%= comment.title %>
+      </h6>
+    </div>
+      <p class="card-text">
+      <%= comment.content %></p>
+      <% if user_signed_in? and current_user.id == comment.user_id or current_user.try(:admin?) %>
+        <%= render 'shared/edit_comment', comment: comment%>
+      <% end %>
+     <div class="card-footer text-muted" >
+          <small>Added by <strong><% if current_user.try(:admin?) %><%= link_to User.find(comment.user_id).name, User.find(comment.user_id) %><% end %><% if ! current_user.try(:admin?) %><%= User.find(comment.user_id).name %><% end %></strong> on
+      <%= l(comment.created_at, format: '%B, %d %Y %H:%M:%S') %>
+      <% if current_user.try(:admin?) %><%= " " + comment.email %><% end %>
+      </small>
+      </div>
+  </div>
+  </p>
+  <% end %>
+<% else %>
+<p><strong>Be the first one to add a comment somewhere!</strong> </p>
+<% end %>
+
+
+<%=  render 'layouts/container_end2' %>
+</br></br>
