@@ -48,6 +48,11 @@
 
   <% @pictures.each do |picture| %>    
     <% if current_user.try(:admin?) or picture.public %>
+    <% @photo_path = show_picture_country_path(picture, @country) if @country != nil %>
+    <% @photo_path = show_picture_tag_path(picture, @tag) if @tag != nil %>
+    <% @photo_path = show_picture_date_path(picture, @date) if @date != nil %>
+    <% @photo_path = picture if @country == nil and @tag == nil and @date == nil %>
+    
         <div class="card">
 
         <% if false %>  
@@ -56,7 +61,7 @@
         <% end %>
 
         <% if picture.image_url.present? %>   
-            <%= link_to picture  do %>
+            <%= link_to @photo_path  do %>
                   <%= image_tag(picture.image_url, :class =>"card-img-top", :height => "200px" ) if picture.image.present? %>
             <% end %>
         <% end %>

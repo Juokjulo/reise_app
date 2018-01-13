@@ -1,6 +1,6 @@
 class PicturesController < ApplicationController
   before_action :set_picture, only: [:show, :edit, :update, :destroy]
-  before_action :list_pictures_helper, only: [:list_pictures, :list_pictures_text]
+  before_action :list_pictures_helper, only: [:list_pictures, :list_pictures_text, :show]
   before_filter :check_privileges!, except: [:index, :show, :list_pictures, :list_pictures_text]
 
   # GET /pictures
@@ -29,9 +29,18 @@ class PicturesController < ApplicationController
   def show
     @commentable = @picture
     @comments = @commentable.comments
-    @pictures = Picture.where(country_id: @picture.country_id).all
-    @previous_picture = @pictures[@pictures.index(@picture) - 1]
-    @next_picture = @pictures[@pictures.index(@picture) + 1]
+    @previous_picture_temp = @pictures[@pictures.index(@picture) - 1]
+    @previous_picture = show_picture_country_path(@previous_picture_temp, @country) if @country != nil 
+    @previous_picture = show_picture_tag_path(@previous_picture_temp, @tag) if @tag != nil 
+    @previous_picture = show_picture_date_path(@previous_picture_temp, @date) if @date != nil 
+    @previous_picture = @previous_picture_temp if @country == nil and @tag == nil and @date == nil 
+
+    @next_picture_temp = @pictures[@pictures.index(@picture) + 1]
+    @next_picture = show_picture_country_path(@next_picture_temp, @country) if @country != nil 
+    @next_picture = show_picture_tag_path(@next_picture_temp, @tag) if @tag != nil 
+    @next_picture = show_picture_date_path(@next_picture_temp, @date) if @date != nil 
+    @next_picture = @next_picture_temp if @country == nil and @tag == nil and @date == nil 
+   
 
   end
 
@@ -134,6 +143,8 @@ class PicturesController < ApplicationController
           @date = Date.parse(params[:date])
           @date = @date.strftime("%Y-%m-%d")
           @pictures = Picture.where(["created_at like ? AND public = ? ", @date + "%", true] ).all
+        else
+          @pictures = Picture.all
         end
         
     end
