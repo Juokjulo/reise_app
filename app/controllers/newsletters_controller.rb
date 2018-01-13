@@ -33,7 +33,7 @@ class NewslettersController < ApplicationController
         format.html { redirect_to @newsletter, notice: 'Newsletter was successfully created.' }
         format.json { render :show, status: :created, location: @newsletter }
         if current_user.newsletter_abo?
-        NewsletterMailer.welcome_email(current_user, @newsletter).deliver_later
+        NewsletterMailer.welcome_email(current_user, @newsletter).deliver_now
         end
       else
         format.html { render :new }
