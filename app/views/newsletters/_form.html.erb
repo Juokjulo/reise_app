@@ -21,6 +21,11 @@
     <%= f.text_area :letter, :class => "form-control", rows: 15  %>
   </div>
 
+  <div class="form-group">
+    <%= f.label :sent %>
+    <%= f.check_box :sent %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

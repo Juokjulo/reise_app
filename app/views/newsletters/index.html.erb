@@ -8,6 +8,7 @@
     <tr>
       <th>Title</th>
       <th>Letter</th>
+      <th>Sent</th>
       <th colspan="4"></th>
     </tr>
   </thead>
@@ -17,6 +18,7 @@
       <tr>
         <td><%= newsletter.title %></td>
         <td><%= newsletter.letter %></td>
+        <td><%= newsletter.sent %></td>
         <td><%= link_to 'Send', send_newsletter_path(newsletter), :class => "btn btn-primary", :role => "button"  %></td>
         <td><%= link_to 'Show', newsletter, :class => "btn btn-success", :role => "button"  %></td>
         <td><%= link_to 'Edit', edit_newsletter_path(newsletter), :class => "btn btn-info", :role => "button"  %></td>

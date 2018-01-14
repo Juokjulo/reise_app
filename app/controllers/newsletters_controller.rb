@@ -23,30 +23,6 @@ class NewslettersController < ApplicationController
   end
 
 
-  def send_new
-    @newsletter = Newsletter.find(params[:newsletter])
-    @users = User.where(newsletter_abo: true).all
-    @sent_to = ''
-
-    @users.each do |user|
-        @sent_to = @sent_to + user.name.to_s + ':' + user.email.to_s + ', '
-    end
-    if current_user.newsletter_abo?
-    respond_to do |format|
-      if NewsletterMailer.newsletter_email(current_user, @newsletter).deliver_later
-        format.html { redirect_to @newsletter, notice: 'Newsletter was sent to: ' + @sent_to}
-        format.json { render :show, status: :send, location: @newsletter }
-      else
-        format.html { render :index }
-        format.json { render json: @newsletter.errors, status: :unprocessable_entity }
-      end
-    end
-   
-
-    end
-
-  end
-
 
   # POST /newsletters
   # POST /newsletters.json
@@ -57,6 +33,7 @@ class NewslettersController < ApplicationController
       if @newsletter.save
         format.html { redirect_to @newsletter, notice: 'Newsletter was successfully created.' }
         format.json { render :show, status: :created, location: @newsletter }
+        send_new(@newsletter) if @newsletter.sent
       else
         format.html { render :new }
         format.json { render json: @newsletter.errors, status: :unprocessable_entity }
@@ -71,6 +48,7 @@ class NewslettersController < ApplicationController
       if @newsletter.update(newsletter_params)
         format.html { redirect_to @newsletter, notice: 'Newsletter was successfully updated.' }
         format.json { render :show, status: :ok, location: @newsletter }
+        send_new(@newsletter) if @newsletter.sent
       else
         format.html { render :edit }
         format.json { render json: @newsletter.errors, status: :unprocessable_entity }
@@ -96,6 +74,23 @@ class NewslettersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def newsletter_params
-      params.require(:newsletter).permit(:title, :letter)
+      params.require(:newsletter).permit(:title, :letter, :sent)
     end
+
+
+  def send_new(newsletter)
+    @newsletter = newsletter
+    @users = User.where(newsletter_abo: true).all
+    @sent_to = ''
+
+    @users.each do |user|
+        @sent_to = @sent_to + user.name.to_s + ':' + user.email.to_s + ', '
+    end
+    if current_user.newsletter_abo?
+      NewsletterMailer.newsletter_email(current_user, @newsletter).deliver_later
+       
+    end
+
+  end
+
 end
