@@ -85,11 +85,11 @@ class NewslettersController < ApplicationController
 
     @users.each do |user|
         @sent_to = @sent_to + user.name.to_s + ':' + user.email.to_s + ', '
+        if user.newsletter_abo?
+          NewsletterMailer.newsletter_email(user, @newsletter).deliver_later
+        end
     end
-    if current_user.newsletter_abo?
-      NewsletterMailer.newsletter_email(current_user, @newsletter).deliver_later
-       
-    end
+    
 
   end
 
