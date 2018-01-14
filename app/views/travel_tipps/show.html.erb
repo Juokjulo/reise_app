@@ -9,7 +9,7 @@
 
 	<p class="text-muted" >
 		<small>
-          written in <%= link_to @travel_tipp.country.name , list_travel_tipps_path(@travel_tipp.country) %> in category <%= link_to @travel_tipp.travel_tipps_category.name , list_travel_tipps_category_path(@travel_tipp.travel_tipps_category) %>  on <%= @travel_tipp.created_at.strftime("%A, the %-d %B %Y") %>, last update on <%= @travel_tipp.updated_at.strftime("%A, the %-d %B %Y")  %>
+          written in <%= link_to @travel_tipp.country.name , list_travel_tipps_path(@travel_tipp.country) %> in category <%= link_to @travel_tipp.travel_tipps_category.name , list_travel_tipps_category_path(@travel_tipp.travel_tipps_category) if @travel_tipp.travel_tipps_category != nil %>  on <%= @travel_tipp.created_at.strftime("%A, the %-d %B %Y") %>, last update on <%= @travel_tipp.updated_at.strftime("%A, the %-d %B %Y")  %>
       </small>
 	</p>
 
