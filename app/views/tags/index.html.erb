@@ -2,7 +2,7 @@
 
 <h1>Tags</h1>
 
-<table>
+<table class="table table-hover">
   <thead>
     <tr>
       <th>Name</th>
@@ -13,10 +13,26 @@
   <tbody>
     <% @tags.each do |tag| %>
       <tr>
-        <td><%= tag.name %></td>
-        <td><%= link_to 'Show', tag, :class => "btn btn-success", :role => "button"  %></td>
-        <td><%= link_to 'Edit', edit_tag_path(tag), :class => "btn btn-info", :role => "button"  %></td>
-        <td><%= link_to 'Destroy', tag, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger", :role => "button"  %></td>
+        <div class="container">
+          <td>
+              <div class="row">
+                    <div class="col-sm-12 col-md-3 col-lg-3 col-lx-3">
+                      <%= tag.name %>
+                    </div>
+                    <div class="col-sm-3 col-md-3 col-lg-3 col-lx-3">
+                      <p><%= link_to 'Show', tag, :class => "btn btn-success", :role => "button"  %></p>
+                    </div>
+                    <div class="col-sm-3 col-md-3 col-lg-3 col-lx-3">
+                      <p><%= link_to 'Edit', edit_tag_path(tag), :class => "btn btn-info", :role => "button"  %></p>
+                    </div>
+                    <div class="col-sm-3 col-md-3 col-lg-3 col-lx-3">
+                      <p><%= link_to 'Destroy', tag, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger", :role => "button"  %></p>
+                    </div>
+
+              </div>
+          </td>
+       </div>
+
       </tr>
     <% end %>
   </tbody>

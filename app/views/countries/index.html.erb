@@ -2,25 +2,43 @@
 
 <h1>Countries</h1>
 
-<table>
+<table class="table table-hover">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Titleimage</th>
-      <th>Shortdescription</th>
-      <th colspan="3"></th>
+      <th>Name Titleimage Shortdescription</th>
     </tr>
   </thead>
 
   <tbody>
     <% @countries.each do |country| %>
       <tr>
-        <td><%= country.name %></td>
-        <td><%= image_tag(country.picture.image_url, :width => 60) if country.picture.image.present? %></td>
-        <td><%= country.shortDescription %></td>
-        <td><%= link_to 'Show', country, :class => "btn btn-success", :role => "button"  %></td>
-        <td><%= link_to 'Edit', edit_country_path(country), :class => "btn btn-info", :role => "button"  %></td>
-        <td><%= link_to 'Destroy', country, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger", :role => "button"  %></td>
+         <div class="container">
+          <td>
+              <div class="row">
+                    <div class="col-sm-12 col-md-3 col-lg-3 col-lx-3">
+                      <b><%= country.name %></b>
+                    </div>
+                    <div class="col-sm-12 col-md-3 col-lg-3 col-lx-3">
+                      <p><%= image_tag(country.picture.image_url, :width => '100%') if country.picture.image.present? %></p>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-6 col-lx-6">
+                      <%= country.shortDescription %>
+                    </div>
+                  
+                    <div class="col-sm-3 col-md-3 col-lg-3 col-lx-3">
+                      <p><%= link_to 'Show', country, :class => "btn btn-success", :role => "button"  %></p>
+                    </div>
+                    <div class="col-sm-3 col-md-3 col-lg-3 col-lx-3">
+                      <p><%= link_to 'Edit', edit_country_path(country), :class => "btn btn-info", :role => "button"  %></p>
+                    </div>
+                    <div class="col-sm-3 col-md-3 col-lg-3 col-lx-3">
+                      <p><%= link_to 'Destroy', country, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger", :role => "button"  %></p>
+                    </div>
+
+              </div>
+          </td>
+       </div>
+
       </tr>
     <% end %>
   </tbody>

@@ -1,10 +1,30 @@
 <%if current_user.try(:admin?)%>
-	<td><%= link_to user.id, user %></td>
-	<td><%= link_to user.name, user %></td>
-	<td><%= link_to user.email, user %></td>
-	<td>Newsletter: <%= "Ja" if user.newsletter_abo %><%= "Nein" if ! user.newsletter_abo %></td>
-	<td>Admin: <%= "Ja" if user.admin %><%= "Nein" if ! user.admin %></td>
-	<% if current_user.try(:admin?) %>
-           <td>   <%= link_to 'reset', reset_password_path(user), :class => "btn btn-danger", :role => "button"  %></td>
-     <% end %> 
+ <div class="container">
+    <td <%== 'class = "bg-warning"' if user.admin %><%== 'class = "bg-info"'  if ! user.admin %>>
+        <div class="row">
+              <div class="col-sm-1 col-md-1 col-lg-1 col-lx-1">
+                <%= link_to user.id, user %>
+              </div>
+              <div class="col-sm-2 col-md-2 col-lg-2 col-lx-2">
+                <%= link_to user.name, user %>
+              </div>
+              <div class="col-sm-4 col-md-4 col-lg-4 col-lx-4">
+                <%= link_to user.email, user %>
+              </div>
+              <div class="col-sm-6 col-md-4 col-lg-2 col-lx-2">
+                Newsletter: <%= "Ja" if user.newsletter_abo %><%= "Nein" if ! user.newsletter_abo %>
+              </div>
+              <div class="col-sm-6 col-md-4 col-lg-1 col-lx-1" >
+                <span <%== 'style = "color: red"' if user.admin %><%== 'style = "color: green"'  if ! user.admin %>>
+                	Admin: <%= "Ja" if user.admin %><%= "Nein" if ! user.admin %></span>
+              </div>
+			<% if current_user.try(:admin?) %>
+		           <div class="col-sm-6 col-md-4 col-lg-1 col-lx-1">
+		                 <%= link_to 'reset', reset_password_path(user), :class => "btn btn-danger", :role => "button"  %>
+		              </div>
+		               
+		    <% end %> 
+    	</div>
+    </td>
+ </div>
 <%end%>
