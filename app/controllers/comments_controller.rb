@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:edit, :update, :destroy]
-  before_filter :check_privileges!, except: [:index]
+ 
 
   def index
     @comments = Comment.all.reverse
