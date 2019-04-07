@@ -5,6 +5,7 @@ gem 'sqlite3'
 group :production do
 	gem 'mysql2'
 end
+gem 'whenever', require: false
 gem 'carrierwave'
 gem 'puma', '~> 3.0'
 gem 'sass-rails', '~> 5.0'
